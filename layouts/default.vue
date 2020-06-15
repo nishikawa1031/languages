@@ -1,116 +1,80 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
+  <v-app>
+    <v-app-bar fixed app>
+      <v-toolbar-title>
+        <v-layout>
+          <v-flex lg12>
+            <v-row>
+              <!-- <v-col><Logo /></v-col> -->
+              <v-col v-if="$vuetify.breakpoint.smAndUp"
+                ><a href="/">Katekyo</a></v-col
+              >
+            </v-row>
+          </v-flex>
+        </v-layout>
+      </v-toolbar-title>
+      <v-toolbar-items>
+        <v-btn text to="/inspire">Categories</v-btn>
+      </v-toolbar-items>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn
+          v-if="!isAuthenticated && $vuetify.breakpoint.smAndUp"
+          text
+          to="/login"
+          >Become a tutor</v-btn
         >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+        <v-btn
+          v-if="!isAuthenticated && $vuetify.breakpoint.smAndUp"
+          text
+          to="/"
+          >Login</v-btn
+        >
+        <v-btn
+          v-if="!isAuthenticated && $vuetify.breakpoint.smAndUp"
+          text
+          to="/"
+          >Sign Up</v-btn
+        >
+        <v-btn v-if="isAuthenticated && $vuetify.breakpoint.smAndUp" text to="/"
+          ><v-icon>mdi-account</v-icon></v-btn
+        >
+      </v-toolbar-items>
     </v-app-bar>
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
+    <v-footer>
+      <v-row>
+        <v-col lg="1">
+          <v-row><v-btn text to="">About Us</v-btn></v-row>
+          <v-row><v-btn text to="">News</v-btn></v-row>
+          <v-row><v-btn text to="">Contact Us</v-btn></v-row>
+        </v-col>
+        <v-col lg="1"></v-col>
+        <v-col lg="1">
+          <v-row><v-btn text to="">Privacy Policy</v-btn></v-row>
+          <v-row><v-btn text to="">Terms of Use</v-btn></v-row>
+          <v-row><v-btn text to="">特定商取引法に基づく表記</v-btn></v-row>
+        </v-col>
+        <v-spacer></v-spacer>
+      </v-row>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import Logo from '~/components/Logo.vue'
 export default {
-  data () {
+  components: {
+    Logo
+  },
+  data() {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      fixed: false
     }
   }
 }
