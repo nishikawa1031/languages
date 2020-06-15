@@ -42,8 +42,10 @@
               </v-list-item>
 
               <v-card-actions>
-                <!-- <v-btn text>Button</v-btn>
-                <v-btn text>Button</v-btn> -->
+                <!-- <!-- <v-btn text>Button</v-btn> -->
+                <v-layout justify-center>
+                  <v-btn @click="submit()" color="blue darken-3" class="white--text">詳細</v-btn>
+                </v-layout>
               </v-card-actions>
             </v-card>
           </li>
