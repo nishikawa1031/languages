@@ -1,68 +1,72 @@
 <template>
   <v-container fluid>
     <v-layout justify-center>
-      <v-card>
-        <v-row>
-          <div v-if="isWaiting">
-            <p>読み込み中</p>
-          </div>
-          <div v-else>
-            <div v-if="!isLogin">
-              <v-btn @click="googleLogin">ログイン</v-btn>
-            </div>
-            <div v-else>
-              <!-- <v-row>
-                <p>{{ user.email }}でログイン中</p>
-              </v-row> -->
-              <v-row>
-                <v-btn @click="logOut">ログアウト</v-btn>
-              </v-row>
-              <v-row>
-                名前、メールアドレス、指導可能科目、自己PRを入力してください。
-              </v-row>
-              <v-row>
-                <label>
-                  <span>
-                    お名前:
-                  </span>
-                  <input v-model="user.name" type="text" />
-                </label>
-              </v-row>
-              <v-row>
-                <label>
-                  <span>
-                    email:
-                  </span>
-                  <input v-model="user.email" type="text" />
-                </label>
-              </v-row>
-              <v-row>
-                <v-select
-                  v-model="user.category"
-                  item-text="name"
-                  item-value="code"
-                  :items="categories"
-                  label="カテゴリー"
-                  dense
-                ></v-select>
-              </v-row>
-              <v-row>
-                <label>
-                  <span>
-                    自己PR:
-                  </span>
-                  <input v-model="user.summary" type="text" />
-                </label>
-              </v-row>
-              <v-row>
-                <v-btn @click="submit()">
-                  Submit
-                </v-btn>
-              </v-row>
-            </div>
-          </div>
-        </v-row>
+      <v-card
+        v-if="isWaiting"
+        class="mx-auto"
+        max-width="500"
+        outlined
+      >
+        <p>読み込み中</p>
       </v-card>
+      <div v-else>
+      <v-card
+        v-if="!isLogin"
+        class="mx-auto"
+        max-width="500"
+        outlined
+      >
+              <v-btn @click="googleLogin">Googleアカウントでログイン</v-btn>
+      </v-card>
+      <v-card
+        v-else
+        class="mx-auto"
+        max-width="500"
+        outlined
+      >
+          <v-card-text>
+              名前、メールアドレス、指導可能科目、経歴・自己PR等を入力してください。
+            <v-text-field
+              v-model="user.name"
+              :rules="nameRules"
+              :counter="10"
+              label="お名前"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-model="user.email"
+              :rules="emailRules"
+              label="E-mail"
+              required
+            ></v-text-field>
+            <v-select
+              v-model="user.category"
+              item-text="name"
+              item-value="name"
+              :items="categories"
+              label="カテゴリー"
+              dense
+            ></v-select>
+            <v-text-field
+              v-model="user.summary"
+              :rules="summaryRules"
+              counter="100"
+              label="経歴・自己PR等"
+              outlined
+            ></v-text-field>
+          </v-card-text>
+        <v-card-actions>
+          <v-btn @click="submit()">
+            Submit
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+      <br>
+      <v-layout justify-center>
+        <v-btn v-if="isLogin" @click="logOut">ログアウト</v-btn>
+
+      </v-layout>
+      </div>
     </v-layout>
   </v-container>
 </template>
@@ -83,12 +87,26 @@ export default {
       user: {
         name: '',
         email: '',
-        summary: ''
+        summary: '',
+        category:'',
       },
+      nameRules: [
+        v => !!v || 'Name is required',
+      ],
+      summaryRules: [
+        v => !!v || 'Summary is required',
+      ],
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+/.test(v) || 'E-mail must be valid',
+      ],
       categories: [
         { code: '01', name: '英語' },
-        { code: '02', name: '数学' },
-        { code: '03', name: '理科' }
+        { code: '02', name: '国語' },
+        { code: '03', name: '数学' },
+        { code: '04', name: '理科' },
+        { code: '03', name: '社会' },
+
       ]
     }
   },
@@ -125,7 +143,7 @@ export default {
         })
         .then((ref) => {
           alert('送信しました')
-          //  console.log('Add ID: ', ref.id)
+           this.$router.push({path:'/'})
         })
     }
   }

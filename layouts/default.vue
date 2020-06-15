@@ -14,33 +14,10 @@
         </v-layout>
       </v-toolbar-title>
       <v-toolbar-items>
-        <v-btn text to="/inspire">Categories</v-btn>
+        <v-btn text to="/login">先生になる</v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <!-- <div v-if="isWaiting">
-          <p>読み込み中</p>
-        </div>
-        <div v-else> -->
-            <v-btn v-if="!isLogin" @click="googleLogin">ログイン</v-btn>
-            <!-- <v-row>
-              <p>{{ user.email }}でログイン中</p>
-            </v-row> -->
-              <v-btn v-else @click="logOut">ログアウト</v-btn>
-
-
-        <!-- <v-btn
-          v-if="!isLogin"
-          text
-          to="/login"
-          >Login</v-btn
-        >
-        <v-btn
-          v-else
-          text
-          @click="logOut"
-          >Sign Up</v-btn
-        > -->
       </v-toolbar-items>
     </v-app-bar>
     <v-content>
