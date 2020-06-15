@@ -32,7 +32,7 @@
                     </v-text>
                     <br>
                     <v-text>
-                      経歴・自己PR等<br>{{ user.summary }}
+                      略歴：{{ user.summary }}
                     </v-text>
                 </v-list-item-content>
 
@@ -46,7 +46,8 @@
               <v-card-actions>
                 <!-- <!-- <v-btn text>Button</v-btn> -->
                 <v-layout justify-center>
-                  <v-btn @click="preview(user.id)" color="blue darken-3" class="white--text">詳細</v-btn>
+                  <v-btn @click="preview(user.id)" color="blue darken-3" class="white--text">Contact</v-btn>
+                  <PreviewModal v-bind:val_preview="postItem_preview" v-if="showModal_preview" @close="closeModal"></PreviewModal>
                 </v-layout>
               </v-card-actions>
             </v-card>
@@ -61,7 +62,6 @@
             :length="length"
             @input = "pageChange"
           ></v-pagination> -->
-      <PreviewModal v-bind:val_preview="postItem_preview" v-if="showModal_preview" @close="closeModal"></PreviewModal>
     </v-flex>
   </v-layout>
 </template>
@@ -71,6 +71,7 @@ import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 import firebase from '@/plugins/firebase'
 import PreviewModal from '~/components/PreviewModal.vue'
+
 
 
 export default {

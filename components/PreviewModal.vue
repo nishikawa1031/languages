@@ -1,16 +1,16 @@
 <template>
   <v-row justify="center">
     <v-btn
-      color="primary"
+      color="blue darken-3"
       dark
       @click.stop="dialog = true"
     >
-      Open Dialog
+      詳細を見る
     </v-btn>
 
     <v-dialog
       v-model="dialog"
-      max-width="290"
+      max-width="400"
     >
       <v-card>
         <v-card-title class="headline">Use Google's location service?</v-card-title>
@@ -27,15 +27,7 @@
             text
             @click="dialog = false"
           >
-            Disagree
-          </v-btn>
-
-          <v-btn
-            color="green darken-1"
-            text
-            @click="dialog = false"
-          >
-            Agree
+            閉じる
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -46,6 +38,9 @@
 <script>
   export default {
     name: 'previewModal',
+    props:{
+      val_preview: Object
+    },
     data () {
       return {
         dialog: false,

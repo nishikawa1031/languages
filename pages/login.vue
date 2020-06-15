@@ -43,6 +43,7 @@
               v-model="user.category"
               item-text="name"
               item-value="name"
+              :rules="categoryRules"
               :items="categories"
               label="カテゴリー"
               dense
@@ -50,7 +51,14 @@
             <v-text-field
               v-model="user.summary"
               :rules="summaryRules"
-              counter="100"
+              counter="30"
+              label="略歴"
+              outlined
+            ></v-text-field>
+            <v-text-field
+              v-model="user.content"
+              :rules="contentRules"
+              counter="200"
               label="経歴・自己PR等"
               outlined
             ></v-text-field>
@@ -88,6 +96,7 @@ export default {
         name: '',
         email: '',
         summary: '',
+        content:'',
         category:'',
       },
       nameRules: [
@@ -95,6 +104,12 @@ export default {
       ],
       summaryRules: [
         v => !!v || 'Summary is required',
+      ],
+      contentRules: [
+        // v => !!v || 'Content is required',
+      ],
+      categoryRules:[
+        v => !!v || 'Category is required',
       ],
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -139,6 +154,7 @@ export default {
           email: this.user.email,
           category: this.user.category,
           summary: this.user.summary,
+          content: this.user.content,
           created_at: firebase.firestore.FieldValue.serverTimestamp()
         })
         .then((ref) => {

@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "firebase": "^7.15.1",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-js-modal": "^2.0.0-rc.3"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0"
