@@ -18,27 +18,29 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn
-          v-if="!isAuthenticated && $vuetify.breakpoint.smAndUp"
+        <!-- <div v-if="isWaiting">
+          <p>読み込み中</p>
+        </div>
+        <div v-else> -->
+            <v-btn v-if="!isLogin" @click="googleLogin">ログイン</v-btn>
+            <!-- <v-row>
+              <p>{{ user.email }}でログイン中</p>
+            </v-row> -->
+              <v-btn v-else @click="logOut">ログアウト</v-btn>
+
+
+        <!-- <v-btn
+          v-if="!isLogin"
           text
           to="/login"
-          >Become a tutor</v-btn
-        >
-        <v-btn
-          v-if="!isAuthenticated && $vuetify.breakpoint.smAndUp"
-          text
-          to="/"
           >Login</v-btn
         >
         <v-btn
-          v-if="!isAuthenticated && $vuetify.breakpoint.smAndUp"
+          v-else
           text
-          to="/"
+          @click="logOut"
           >Sign Up</v-btn
-        >
-        <v-btn v-if="isAuthenticated && $vuetify.breakpoint.smAndUp" text to="/"
-          ><v-icon>mdi-account</v-icon></v-btn
-        >
+        > -->
       </v-toolbar-items>
     </v-app-bar>
     <v-content>
@@ -67,14 +69,44 @@
 </template>
 
 <script>
+import firebase from '@/plugins/firebase'
+
 import Logo from '~/components/Logo.vue'
 export default {
+  asyncData() {
+    return {
+      isWaiting: true,
+      isLogin: false,
+    }
+  },
+  mounted() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.isWaiting = false
+      if (user) {
+        this.isLogin = true
+        this.user = user
+      } else {
+        this.isLogin = false
+        this.user = []
+      }
+    })
+  },
   components: {
     Logo
   },
   data() {
     return {
       fixed: false
+    }
+  },
+  methods: {
+    googleLogin() {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithRedirect(provider)
+      this.$router.push({path:'/login'})
+    },
+    logOut() {
+      firebase.auth().signOut()
     }
   }
 }
