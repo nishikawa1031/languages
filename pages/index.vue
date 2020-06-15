@@ -50,6 +50,12 @@
             </v-card>
           </li>
         </ul>
+        <v-divider></v-divider>
+          <!-- <v-pagination
+            v-model="page"
+            :length="length"
+            @input = "pageChange"
+          ></v-pagination> -->
 
     </v-flex>
   </v-layout>
@@ -65,6 +71,10 @@ export default {
   data() {
     return {
       allUsers: [],
+      displayUsers:[],
+      pageSize: 10,
+      length:0,
+      page: 1,
       user: {
         name: '',
         email: '',
@@ -76,6 +86,9 @@ export default {
   components: {
     Logo,
     VuetifyLogo
+  },
+  mounted(){
+    // this.pageChange(pageNumber);
   },
   created() {
     allusers: {
@@ -89,6 +102,13 @@ export default {
           })
         })
     }
+  },
+  methods: {
+    // pageChange(pageNumber){
+    //   console.log(pageNumber)
+      // let displayUsers = this.allUsers
+      // this.allUsers.slice(this.pageSize*(pageNumber -1), this.pageSize*(pageNumber));
+    // }
   }
 }
 </script>
