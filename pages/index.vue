@@ -9,6 +9,8 @@
       sm8
       md6
     >
+    <v-row>
+      <!-- <v-col> -->
         <ul>
           <li v-for="user in allUsers" :key="user.id">
             <v-card
@@ -44,19 +46,22 @@
               <v-card-actions>
                 <!-- <!-- <v-btn text>Button</v-btn> -->
                 <v-layout justify-center>
-                  <v-btn @click="submit()" color="blue darken-3" class="white--text">詳細</v-btn>
+                  <v-btn @click="preview(user.id)" color="blue darken-3" class="white--text">詳細</v-btn>
                 </v-layout>
               </v-card-actions>
             </v-card>
           </li>
         </ul>
+      <!-- </v-col>
+      <v-col></v-col> -->
+    </v-row>
         <v-divider></v-divider>
           <!-- <v-pagination
             v-model="page"
             :length="length"
             @input = "pageChange"
           ></v-pagination> -->
-
+      <PreviewModal v-bind:val_preview="postItem_preview" v-if="showModal_preview" @close="closeModal"></PreviewModal>
     </v-flex>
   </v-layout>
 </template>
@@ -65,6 +70,7 @@
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 import firebase from '@/plugins/firebase'
+import PreviewModal from '~/components/PreviewModal.vue'
 
 
 export default {
@@ -81,11 +87,17 @@ export default {
         summary: '',
         category:'',
       },
+      showModal_preview: false,
+      name:'',
+      email:'',
+      summary:'',
+      isAcitve01: false,
     }
   },
   components: {
     Logo,
-    VuetifyLogo
+    VuetifyLogo,
+    PreviewModal,
   },
   mounted(){
     // this.pageChange(pageNumber);
@@ -104,6 +116,16 @@ export default {
     }
   },
   methods: {
+    preview(item){
+      this.isAcitve01 = true;
+      this.postItem_preview = {item:item,name:this.name,email:this.email,summary:this.summary};
+      this.showModal_preview = true;
+      console.log("てすと")
+    },
+    closeModal(){
+      this.isAcitve01 = false;
+      this.showModal_preview = false;
+    }
     // pageChange(pageNumber){
     //   console.log(pageNumber)
       // let displayUsers = this.allUsers
