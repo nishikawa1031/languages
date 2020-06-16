@@ -123,6 +123,7 @@ export default {
   data() {
     return {
       allUsers: [],
+      selectedUser:'',
       displayUsers:[],
       pageSize: 10,
       length:0,
