@@ -10,9 +10,22 @@
       md6
     >
     <v-row>
-      <!-- <v-col> -->
+      <v-card>
+        <v-app-bar color="grey lighten-3">
+          <v-tool-bar>
+            <v-btn text color="light-blue darken-1" fab><v-icon @click="getData();">mdi-reorder-horizontal</v-icon></v-btn>
+          </v-tool-bar>
+          <v-toolbar-items>
+            <v-btn text color="light-blue darken-1" fab @click="englishUsers();">英語</v-btn>
+
+          </v-toolbar-items>
+        </v-app-bar>
+      </v-card>
+    </v-row>
+    <br>
+    <v-row>
         <ul>
-          <li v-for="user in allUsers" :key="user.id">
+          <li v-for="user in displayUsers" :key="user.id">
             <v-card
               class="mx-auto"
               max-width="344"
@@ -103,8 +116,11 @@ export default {
   mounted(){
     // this.pageChange(pageNumber);
   },
-  created() {
-    allusers: {
+  created(){
+    this.getData();
+  },
+  methods: {
+    getData(){
       firebase
         .firestore()
         .collection('users')
@@ -113,10 +129,22 @@ export default {
           snapshot.forEach((doc) => {
             this.allUsers.push(doc.data())
           })
+          this.displayUsers = this.allUsers
+          console.log(this.displayUsers)
         })
-    }
-  },
-  methods: {
+    },
+    englishUsers(){
+      firebase
+        .firestore()
+        .collection('users')
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            this.allUsers.push(doc.data())
+          })
+          this.displayUsers = this.allUsers.filter(e => e.category == "英語")
+        })
+    },
     preview(item){
       this.isAcitve01 = true;
       this.postItem_preview = {item:item,name:this.name,email:this.email,summary:this.summary};
