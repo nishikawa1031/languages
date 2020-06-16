@@ -77,11 +77,11 @@
         </ul>
     </v-row>
         <v-divider></v-divider>
-          <!-- <v-pagination
+          <v-pagination
             v-model="page"
             :length="length"
             @input = "pageChange"
-          ></v-pagination> -->
+          ></v-pagination>
       <v-row justify="center">
         <v-dialog
           v-model="dialog"
@@ -125,7 +125,7 @@ export default {
       allUsers: [],
       selectedUser:'',
       displayUsers:[],
-      pageSize: 10,
+      pageSize: 3,
       length:0,
       page: 1,
       user: {
@@ -146,10 +146,9 @@ export default {
     VuetifyLogo,
   },
   mounted(){
-    // this.pageChange(pageNumber);
+    this.getData();
   },
   created(){
-    this.getData();
   },
   methods: {
     getData(){
@@ -162,7 +161,9 @@ export default {
           snapshot.forEach((doc) => {
             this.allUsers.push(doc.data())
           })
-          this.displayUsers = this.allUsers
+          this.length = Math.ceil(this.allUsers.length/this.pageSize)
+          this.displayUsers = this.allUsers.slice(0,this.pageSize)
+
         })
     },
     englishUsers(){
@@ -177,6 +178,7 @@ export default {
             this.allUsers.push(doc.data())
           })
           this.displayUsers = this.allUsers.filter(e => e.category == "英語")
+          this.length = Math.ceil(this.displayUsers.length/this.pageSize)
         })
     },
     mathUsers(){
@@ -235,11 +237,10 @@ export default {
       this.selectedUser = user
       console.log(this.selectedUser)
     },
-    // pageChange(pageNumber){
-    //   console.log(pageNumber)
-      // let displayUsers = this.allUsers
-      // this.allUsers.slice(this.pageSize*(pageNumber -1), this.pageSize*(pageNumber));
-    // }
+    pageChange(pageNumber){
+      console.log(pageNumber)
+      this.displayUsers = this.allUsers.slice(this.pageSize*(pageNumber -1), this.pageSize*(pageNumber));
+    }
   }
 }
 </script>
