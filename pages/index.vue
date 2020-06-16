@@ -17,11 +17,11 @@
           </v-tool-bar>
           <v-toolbar-items>
             <!-- 汚すぎるから時間あるときに書き直す。 -->
-            <v-btn text color="light-blue darken-1" fab @click="englishUsers();">英語</v-btn>
-            <v-btn text color="light-blue darken-1" fab @click="mathUsers();">数学</v-btn>
-            <v-btn text color="light-blue darken-1" fab @click="scienceUsers();">理科</v-btn>
-            <v-btn text color="light-blue darken-1" fab @click="socialUsers();">社会</v-btn>
-            <v-btn text color="light-blue darken-1" fab @click="japaneseUsers();">国語</v-btn>
+            <v-btn text color="light-blue darken-1" fab @click="englishUsers();">英語<br>({{this.englishUsersLength}})</v-btn>
+            <v-btn text color="light-blue darken-1" fab @click="mathUsers();">数学<br>({{mathUsersLength}})</v-btn>
+            <v-btn text color="light-blue darken-1" fab @click="scienceUsers();">理科<br>({{scienceUsersLength}})</v-btn>
+            <v-btn text color="light-blue darken-1" fab @click="socialUsers();">社会<br>({{socialUsersLength}})</v-btn>
+            <v-btn text color="light-blue darken-1" fab @click="japaneseUsers();">国語<br>({{japaneseUsersLength}})</v-btn>
           </v-toolbar-items>
         </v-app-bar>
       </v-card>
@@ -123,6 +123,11 @@ export default {
   data() {
     return {
       allUsers: [],
+      englishUsersLength:'',
+      mathUsersLength:'',
+      scienceUsersLength:'',
+      socialUsersLength:'',
+      japaneseUsersLength:'',
       selectedUser:'',
       displayUsers:[],
       pageSize: 6,
@@ -161,6 +166,12 @@ export default {
           snapshot.forEach((doc) => {
             this.allUsers.push(doc.data())
           })
+          this.englishUsersLength = this.allUsers.filter(e => e.category == "英語").length
+          this.mathUsersLength = this.allUsers.filter(e => e.category == "数学").length
+          this.scienceUsersLength = this.allUsers.filter(e => e.category == "理科").length
+          this.socialUsersLength = this.allUsers.filter(e => e.category == "社会").length
+          this.japaneseUsersLength = this.allUsers.filter(e => e.category == "国語").length
+
           this.length = Math.ceil(this.allUsers.length/this.pageSize)
           this.displayUsers = this.allUsers.slice(0,this.pageSize)
 
