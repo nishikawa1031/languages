@@ -66,8 +66,9 @@
                     color="primary"
                     dark
                     @click.stop="dialog = true"
+                    @click="passID(user);"
                   >
-                    Open Dialog
+                    詳細を見る
                   </v-btn>
                 </v-layout>
               </v-card-actions>
@@ -84,13 +85,13 @@
       <v-row justify="center">
         <v-dialog
           v-model="dialog"
-          max-width="290"
+          max-width="400"
         >
           <v-card>
-            <v-card-title class="headline">Use Google's location service?</v-card-title>
+            <v-card-title class="title">{{selectedUser.name}}さんの自己PR</v-card-title>
 
             <v-card-text>
-              Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+              {{selectedUser.content}}
             </v-card-text>
 
             <v-card-actions>
@@ -101,15 +102,7 @@
                 text
                 @click="dialog = false"
               >
-                Disagree
-              </v-btn>
-
-              <v-btn
-                color="green darken-1"
-                text
-                @click="dialog = false"
-              >
-                Agree
+                閉じる
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -169,7 +162,6 @@ export default {
             this.allUsers.push(doc.data())
           })
           this.displayUsers = this.allUsers
-          console.log(this.displayUsers)
         })
     },
     englishUsers(){
@@ -237,6 +229,10 @@ export default {
           })
           this.displayUsers = this.allUsers.filter(e => e.category == "国語")
         })
+    },
+    passID(user){
+      this.selectedUser = user
+      console.log(this.selectedUser)
     },
     // pageChange(pageNumber){
     //   console.log(pageNumber)
