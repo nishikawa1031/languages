@@ -10,7 +10,7 @@
       md6
     >
     <v-row>
-      <v-card>
+      <v-card class="mx-auto">
         <v-app-bar color="grey lighten-3">
           <v-tool-bar>
             <v-btn text color="light-blue darken-1" fab><v-icon @click="getData();">mdi-reorder-horizontal</v-icon></v-btn>
@@ -125,7 +125,7 @@ export default {
       allUsers: [],
       selectedUser:'',
       displayUsers:[],
-      pageSize: 3,
+      pageSize: 6,
       length:0,
       page: 1,
       user: {
@@ -247,5 +247,7 @@ export default {
 <style scoped>
   li {
     list-style: none;
+    display: inline-block;
   }
+
 </style>
