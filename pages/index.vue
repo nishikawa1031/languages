@@ -16,8 +16,12 @@
             <v-btn text color="light-blue darken-1" fab><v-icon @click="getData();">mdi-reorder-horizontal</v-icon></v-btn>
           </v-tool-bar>
           <v-toolbar-items>
+            <!-- 汚すぎるから時間あるときに書き直す。 -->
             <v-btn text color="light-blue darken-1" fab @click="englishUsers();">英語</v-btn>
-
+            <v-btn text color="light-blue darken-1" fab @click="mathUsers();">数学</v-btn>
+            <v-btn text color="light-blue darken-1" fab @click="scienceUsers();">理科</v-btn>
+            <v-btn text color="light-blue darken-1" fab @click="socialUsers();">社会</v-btn>
+            <v-btn text color="light-blue darken-1" fab @click="japaneseUsers();">国語</v-btn>
           </v-toolbar-items>
         </v-app-bar>
       </v-card>
@@ -121,6 +125,7 @@ export default {
   },
   methods: {
     getData(){
+      this.allUsers = []
       firebase
         .firestore()
         .collection('users')
@@ -134,6 +139,8 @@ export default {
         })
     },
     englishUsers(){
+      // 汚すぎるから時間あるときに書き直す。
+      this.allUsers = []
       firebase
         .firestore()
         .collection('users')
@@ -143,6 +150,58 @@ export default {
             this.allUsers.push(doc.data())
           })
           this.displayUsers = this.allUsers.filter(e => e.category == "英語")
+        })
+    },
+    mathUsers(){
+      this.allUsers = []
+      firebase
+        .firestore()
+        .collection('users')
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            this.allUsers.push(doc.data())
+          })
+          this.displayUsers = this.allUsers.filter(e => e.category == "数学")
+        })
+    },
+    scienceUsers(){
+      this.allUsers = []
+      firebase
+        .firestore()
+        .collection('users')
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            this.allUsers.push(doc.data())
+          })
+          this.displayUsers = this.allUsers.filter(e => e.category == "理科")
+        })
+    },
+    socialUsers(){
+      this.allUsers = []
+      firebase
+        .firestore()
+        .collection('users')
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            this.allUsers.push(doc.data())
+          })
+          this.displayUsers = this.allUsers.filter(e => e.category == "社会")
+        })
+    },
+    japaneseUsers(){
+      this.allUsers = []
+      firebase
+        .firestore()
+        .collection('users')
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            this.allUsers.push(doc.data())
+          })
+          this.displayUsers = this.allUsers.filter(e => e.category == "国語")
         })
     },
     preview(item){
