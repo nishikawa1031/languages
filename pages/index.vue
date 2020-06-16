@@ -61,10 +61,8 @@
               </v-list-item>
 
               <v-card-actions>
-                <!-- <!-- <v-btn text>Button</v-btn> -->
                 <v-layout justify-center>
-                  <v-btn @click="preview(user.id)" color="blue darken-3" class="white--text">Contact</v-btn>
-                  <PreviewModal v-bind:val_preview="postItem_preview" v-if="showModal_preview" @close="closeModal"></PreviewModal>
+                  <v-btn @click="preview(user.id)" color="blue darken-3" class="white--text">詳細を見る</v-btn>
                 </v-layout>
               </v-card-actions>
             </v-card>
@@ -72,6 +70,7 @@
         </ul>
       <!-- </v-col>
       <v-col></v-col> -->
+      <PreviewModal v-bind:val_preview="postItem_preview" v-if="showModal_preview" @close="closeModal"></PreviewModal>
     </v-row>
         <v-divider></v-divider>
           <!-- <v-pagination
