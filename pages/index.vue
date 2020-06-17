@@ -144,13 +144,13 @@ export default {
         email: '',
         summary: '',
         category:'',
+        count:'',
       },
       name:'',
       email:'',
       summary:'',
       isAcitve01: false,
       dialog: false,
-      count:0,
     }
   },
   components: {
@@ -254,7 +254,7 @@ export default {
     },
     passID(user){
       this.selectedUser = user
-      this.count ++ ;
+      this.user.count ++ ;
 
       const db = firebase.firestore()
 
@@ -264,10 +264,10 @@ export default {
       const dbUser = db.collection('users').doc(thisID)
       dbUser
         .update({
-          count: this.count,
+          count: this.user.count,
         })
         .then((ref) => {
-          console.log(this.count)
+          console.log(this.user.count)
           this.getData();
         })
     },
