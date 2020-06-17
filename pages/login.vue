@@ -62,6 +62,9 @@
               label="経歴・自己PR等"
               outlined
             ></v-text-field>
+            <label class="postImage-appendBtn">
+              <input @change="upload" type="file" data-label="画像の添付">
+            </label>
           </v-card-text>
         <v-card-actions>
           <v-btn @click="submit()">
@@ -92,6 +95,9 @@ export default {
   },
   data() {
     return {
+      file:{
+        name:"",
+      },
       user: {
         name: '',
         email: '',
@@ -99,6 +105,7 @@ export default {
         content:'',
         category:'',
       },
+      icon:'',
       nameRules: [
         v => !!v || 'Name is required',
       ],
@@ -121,7 +128,6 @@ export default {
         { code: '03', name: '数学' },
         { code: '04', name: '理科' },
         { code: '03', name: '社会' },
-
       ]
     }
   },
@@ -155,11 +161,27 @@ export default {
           category: this.user.category,
           summary: this.user.summary,
           content: this.user.content,
+          icon: this.icon,
           created_at: firebase.firestore.FieldValue.serverTimestamp()
         })
         .then((ref) => {
           alert('送信しました')
            this.$router.push({path:'/'})
+        })
+    },
+    upload (p) {
+        const file = p.target.files[0]
+        const storageRef = firebase.storage().ref('users/' + file.name)
+        // 画像をStorageにアップロード
+        storageRef.put(file).then(() => {
+            // アップロードした画像のURLを取得
+            firebase.storage().ref('users/' + file.name).getDownloadURL().then((url) => {
+                // アップロードした画像のURLと画像名をDBに保存
+                this.icon = url
+                console.log(this.icon)
+            }).catch((error) => {
+                console.log(error)
+            })
         })
     }
   }
