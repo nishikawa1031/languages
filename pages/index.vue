@@ -256,14 +256,17 @@ export default {
       this.selectedUser = user
       this.count ++ ;
 
+      const db = firebase.firestore()
+      let thisID = String(user.id)
 
-      const dbUser = firebase.firestore().collection('users')
+      const dbUser = db.collection('users').doc(thisID)
       dbUser
-        .add({
+        .update({
           count: this.count,
         })
         .then((ref) => {
           console.log(this.count)
+          this.getData();
         })
     },
     pageChange(pageNumber){
