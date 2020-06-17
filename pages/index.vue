@@ -51,6 +51,9 @@
                     <v-text>
                       略歴：{{ user.summary }}
                     </v-text>
+                    <v-text>
+                      閲覧数：{{ user.count }}
+                    </v-text>
                 </v-list-item-content>
 
                 <v-list-item-avatar
@@ -147,6 +150,7 @@ export default {
       summary:'',
       isAcitve01: false,
       dialog: false,
+      count:0,
     }
   },
   components: {
@@ -250,7 +254,17 @@ export default {
     },
     passID(user){
       this.selectedUser = user
-      console.log(this.selectedUser)
+      this.count ++ ;
+
+
+      const dbUser = firebase.firestore().collection('users')
+      dbUser
+        .add({
+          count: this.count,
+        })
+        .then((ref) => {
+          console.log(this.count)
+        })
     },
     pageChange(pageNumber){
       console.log(pageNumber)

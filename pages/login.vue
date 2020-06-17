@@ -162,6 +162,7 @@ export default {
           summary: this.user.summary,
           content: this.user.content,
           icon: this.icon,
+          count: 0,
           created_at: firebase.firestore.FieldValue.serverTimestamp()
         })
         .then((ref) => {

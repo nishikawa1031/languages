@@ -4,12 +4,8 @@
       <v-toolbar-title>
         <v-layout>
           <v-flex lg12>
-            <v-row>
               <!-- <v-col><Logo /></v-col> -->
-              <v-col v-if="$vuetify.breakpoint.smAndUp"
-                ><a href="/">Katekyo</a></v-col
-              >
-            </v-row>
+              <v-btn text to="/">Katekyo</v-btn>
           </v-flex>
         </v-layout>
       </v-toolbar-title>
