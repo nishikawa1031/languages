@@ -125,6 +125,7 @@ export default {
   data() {
     return {
       allUsers: [],
+      // allUsersLength:'',
       englishUsersLength:'',
       mathUsersLength:'',
       scienceUsersLength:'',
@@ -168,6 +169,7 @@ export default {
           snapshot.forEach((doc) => {
             this.allUsers.push(doc.data())
           })
+          // this.allUsersLength = this.allUsers.length
           this.englishUsersLength = this.allUsers.filter(e => e.category == "英語").length
           this.mathUsersLength = this.allUsers.filter(e => e.category == "数学").length
           this.scienceUsersLength = this.allUsers.filter(e => e.category == "理科").length
