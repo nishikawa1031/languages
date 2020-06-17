@@ -57,7 +57,9 @@
                   tile
                   size="80"
                   color="grey"
-                ></v-list-item-avatar>
+                >
+                <img :src="user.icon"/>
+                </v-list-item-avatar>
               </v-list-item>
 
               <v-card-actions>
