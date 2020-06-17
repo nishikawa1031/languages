@@ -257,6 +257,8 @@ export default {
       this.count ++ ;
 
       const db = firebase.firestore()
+
+      // そもそもuserはidをもっていない
       let thisID = String(user.id)
 
       const dbUser = db.collection('users').doc(thisID)
