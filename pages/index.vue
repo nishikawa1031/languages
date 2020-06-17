@@ -254,20 +254,19 @@ export default {
     },
     passID(user){
       this.selectedUser = user
-      this.user.count ++ ;
+      this.selectedUser.count ++ ;
 
       const db = firebase.firestore()
 
-      // そもそもuserはidをもっていない
-      let thisID = String(user.id)
+      let thisID = String(this.selectedUser.id)
 
       const dbUser = db.collection('users').doc(thisID)
       dbUser
         .update({
-          count: this.user.count,
+          count: this.selectedUser.count,
         })
         .then((ref) => {
-          console.log(this.user.count)
+          console.log(this.selectedUser.count)
           this.getData();
         })
     },
