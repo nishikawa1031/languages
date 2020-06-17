@@ -156,6 +156,7 @@ export default {
       const dbUsers = db.collection('users')
       dbUsers
         .add({
+          id: "",
           name: this.user.name,
           email: this.user.email,
           category: this.user.category,
@@ -165,7 +166,14 @@ export default {
           count: 0,
           created_at: firebase.firestore.FieldValue.serverTimestamp()
         })
-        .then((ref) => {
+        .then(docRef => {
+          dbUsers.doc(docRef.id).update({
+            id: docRef.id
+          }).then(() => {
+              // success
+          }).catch(error => {
+          // error
+          })
           alert('送信しました')
            this.$router.push({path:'/'})
         })
