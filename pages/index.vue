@@ -21,6 +21,7 @@
               v-for="(category, index) in categories"
               :key="index"
               text
+              color="light-blue darken-1"
               @click="getCategoryData(category);"
             >
               {{ category.content }}<br>({{getCategoryNumber(category)}})
