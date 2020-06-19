@@ -133,12 +133,6 @@ export default {
     return {
       allUsers: [],
       // allUsersLength:'',
-      englishUsers:'',
-      englishUsersLength:'',
-      mathUsersLength:'',
-      scienceUsersLength:'',
-      socialUsersLength:'',
-      japaneseUsersLength:'',
       selectedUser:'',
       displayUsers:[],
       pageSize: 4,
@@ -192,41 +186,13 @@ export default {
         })
     },
     getCategoryNumber(category){
-      if (category.content == "英語"){
-        return this.allUsers.filter(e => e.category == "英語").length
-        // this.category.length = this.allUsers.filter(e => e.category == "英語").length
-      }else if(category.content == "数学"){
-        return this.allUsers.filter(e => e.category == "数学").length
-
-      }else if(category.content == "理科"){
-        return this.allUsers.filter(e => e.category == "理科").length
-
-      }else if(category.content == "社会"){
-        return this.allUsers.filter(e => e.category == "社会").length
-
-      }else if(category.content == "国語"){
-        return this.allUsers.filter(e => e.category == "国語").length
-
-      }
+      return this.allUsers.filter(e => e.category == category.content).length
     },
     getCategoryData(category){
-      if (category.content == "英語"){
-        console.log(category.content)
-        this.displayUsers = this.allUsers.filter(e => e.category == "英語").slice(0,this.pageSize)
-        // this.category.length = this.allUsers.filter(e => e.category == "英語").length
-      }else if(category.content == "数学"){
-        this.displayUsers = this.allUsers.filter(e => e.category == "数学").slice(0,this.pageSize)
-        this.length = Math.ceil(this.displayUsers.length/this.pageSize)
-      }else if(category.content == "理科"){
-        this.displayUsers = this.allUsers.filter(e => e.category == "理科").slice(0,this.pageSize)
-        this.length = Math.ceil(this.displayUsers.length/this.pageSize)
-      }else if(category.content == "社会"){
-        this.displayUsers = this.allUsers.filter(e => e.category == "社会").slice(0,this.pageSize)
-        this.length = Math.ceil(this.displayUsers.length/this.pageSize)
-      }else if(category.content == "国語"){
-        this.displayUsers = this.allUsers.filter(e => e.category == "国語").slice(0,this.pageSize)
-        this.length = Math.ceil(this.displayUsers.length/this.pageSize)
-      }
+      this.displayUsers = this.allUsers.filter(e => e.category == category.content).slice(0,this.pageSize)
+      console.log(this.displayUsers)
+      this.categoryUsers = this.allUsers.filter(e => e.category == category.content)
+      this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
     },
     passID(user){
       this.selectedUser = user
