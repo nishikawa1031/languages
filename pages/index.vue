@@ -16,12 +16,15 @@
             <v-btn text color="light-blue darken-1" fab><v-icon @click="getData();">mdi-reorder-horizontal</v-icon></v-btn>
           </v-tool-bar>
           <v-toolbar-items>
-            <!-- 汚すぎるから時間あるときに書き直す。 -->
-            <v-btn text color="light-blue darken-1" fab @click="englishUsers();">英語<br>({{this.englishUsersLength}})</v-btn>
-            <v-btn text color="light-blue darken-1" fab @click="mathUsers();">数学<br>({{mathUsersLength}})</v-btn>
-            <v-btn text color="light-blue darken-1" fab @click="scienceUsers();">理科<br>({{scienceUsersLength}})</v-btn>
-            <v-btn text color="light-blue darken-1" fab @click="socialUsers();">社会<br>({{socialUsersLength}})</v-btn>
-            <v-btn text color="light-blue darken-1" fab @click="japaneseUsers();">国語<br>({{japaneseUsersLength}})</v-btn>
+            <!-- 書き直す。 -->
+            <v-btn
+              v-for="(category, index) in categories"
+              :key="index"
+              text
+              @click="getCategoryData(category);"
+            >
+              {{ category.content }}<br>({{getCategoryNumber(category)}})
+            </v-btn>
           </v-toolbar-items>
         </v-app-bar>
       </v-card>
@@ -129,6 +132,7 @@ export default {
     return {
       allUsers: [],
       // allUsersLength:'',
+      englishUsers:'',
       englishUsersLength:'',
       mathUsersLength:'',
       scienceUsersLength:'',
@@ -136,9 +140,16 @@ export default {
       japaneseUsersLength:'',
       selectedUser:'',
       displayUsers:[],
-      pageSize: 6,
+      pageSize: 4,
       length:0,
       page: 1,
+      categories:[
+        { content: '英語', created: '2019-03-31 15:30' },
+        { content: '国語', created: '2019-03-31 15:30' },
+        { content: '数学', created: '2019-03-31 15:30' },
+        { content: '理科', created: '2019-03-31 15:30' },
+        { content: '社会', created: '2019-03-31 15:30' }
+      ],
       user: {
         name: '',
         email: '',
@@ -174,83 +185,47 @@ export default {
             this.allUsers.push(doc.data())
           })
           // this.allUsersLength = this.allUsers.length
-          this.englishUsersLength = this.allUsers.filter(e => e.category == "英語").length
-          this.mathUsersLength = this.allUsers.filter(e => e.category == "数学").length
-          this.scienceUsersLength = this.allUsers.filter(e => e.category == "理科").length
-          this.socialUsersLength = this.allUsers.filter(e => e.category == "社会").length
-          this.japaneseUsersLength = this.allUsers.filter(e => e.category == "国語").length
 
           this.length = Math.ceil(this.allUsers.length/this.pageSize)
           this.displayUsers = this.allUsers.slice(0,this.pageSize)
+        })
+    },
+    getCategoryNumber(category){
+      if (category.content == "英語"){
+        return this.allUsers.filter(e => e.category == "英語").length
+        // this.category.length = this.allUsers.filter(e => e.category == "英語").length
+      }else if(category.content == "数学"){
+        return this.allUsers.filter(e => e.category == "数学").length
 
-        })
+      }else if(category.content == "理科"){
+        return this.allUsers.filter(e => e.category == "理科").length
+
+      }else if(category.content == "社会"){
+        return this.allUsers.filter(e => e.category == "社会").length
+
+      }else if(category.content == "国語"){
+        return this.allUsers.filter(e => e.category == "国語").length
+
+      }
     },
-    englishUsers(){
-      // 汚すぎるから時間あるときに書き直す。
-      this.allUsers = []
-      firebase
-        .firestore()
-        .collection('users')
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            this.allUsers.push(doc.data())
-          })
-          this.displayUsers = this.allUsers.filter(e => e.category == "英語")
-          this.length = Math.ceil(this.displayUsers.length/this.pageSize)
-        })
-    },
-    mathUsers(){
-      this.allUsers = []
-      firebase
-        .firestore()
-        .collection('users')
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            this.allUsers.push(doc.data())
-          })
-          this.displayUsers = this.allUsers.filter(e => e.category == "数学")
-        })
-    },
-    scienceUsers(){
-      this.allUsers = []
-      firebase
-        .firestore()
-        .collection('users')
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            this.allUsers.push(doc.data())
-          })
-          this.displayUsers = this.allUsers.filter(e => e.category == "理科")
-        })
-    },
-    socialUsers(){
-      this.allUsers = []
-      firebase
-        .firestore()
-        .collection('users')
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            this.allUsers.push(doc.data())
-          })
-          this.displayUsers = this.allUsers.filter(e => e.category == "社会")
-        })
-    },
-    japaneseUsers(){
-      this.allUsers = []
-      firebase
-        .firestore()
-        .collection('users')
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            this.allUsers.push(doc.data())
-          })
-          this.displayUsers = this.allUsers.filter(e => e.category == "国語")
-        })
+    getCategoryData(category){
+      if (category.content == "英語"){
+        console.log(category.content)
+        this.displayUsers = this.allUsers.filter(e => e.category == "英語").slice(0,this.pageSize)
+        // this.category.length = this.allUsers.filter(e => e.category == "英語").length
+      }else if(category.content == "数学"){
+        this.displayUsers = this.allUsers.filter(e => e.category == "数学").slice(0,this.pageSize)
+        this.length = Math.ceil(this.displayUsers.length/this.pageSize)
+      }else if(category.content == "理科"){
+        this.displayUsers = this.allUsers.filter(e => e.category == "理科").slice(0,this.pageSize)
+        this.length = Math.ceil(this.displayUsers.length/this.pageSize)
+      }else if(category.content == "社会"){
+        this.displayUsers = this.allUsers.filter(e => e.category == "社会").slice(0,this.pageSize)
+        this.length = Math.ceil(this.displayUsers.length/this.pageSize)
+      }else if(category.content == "国語"){
+        this.displayUsers = this.allUsers.filter(e => e.category == "国語").slice(0,this.pageSize)
+        this.length = Math.ceil(this.displayUsers.length/this.pageSize)
+      }
     },
     passID(user){
       this.selectedUser = user
@@ -267,7 +242,7 @@ export default {
         })
         .then((ref) => {
           console.log(this.selectedUser.count)
-          this.getData();
+          pageChange(pageNumber)
         })
     },
     pageChange(pageNumber){
