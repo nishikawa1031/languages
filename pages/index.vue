@@ -39,25 +39,20 @@
               max-width="344"
               outlined
             >
-              <v-list-item three-line>
+              <v-list-item>
                 <v-list-item-content>
                   <div class="overline mb-4"></div>
                   <v-list-item-title class="headline mb-1">
                     {{ user.name }}
                   </v-list-item-title>
                   <v-list-item-subtitle>
-                    {{ user.email }}
-                  </v-list-item-subtitle>
-                    <v-text>
                       指導科目：{{ user.category }}
-                    </v-text>
                     <br>
-                    <v-text>
-                      略歴：{{ user.summary }}
-                    </v-text>
-                    <v-text>
+                      自己PR等：{{ user.summary }}
+                    <br>
                       閲覧数：{{ user.count }}
-                    </v-text>
+                  </v-list-item-subtitle>
+
                 </v-list-item-content>
 
                 <v-list-item-avatar
@@ -97,10 +92,14 @@
           max-width="400"
         >
           <v-card>
-            <v-card-title class="title">{{selectedUser.name}}さんの自己PR</v-card-title>
+            <v-card-title class="title">{{selectedUser.name}}さんの詳細</v-card-title>
 
             <v-card-text>
-              {{selectedUser.content}}
+              詳細：{{selectedUser.content}}
+              <br>
+              使用ツール：{{selectedUser.tool}}
+              <br>
+              希望条件：{{selectedUser.condition}}
             </v-card-text>
 
             <v-card-actions>
@@ -165,6 +164,7 @@ export default {
   },
   mounted(){
     this.getData();
+    this.sortUsers();
   },
   created(){
   },
@@ -183,14 +183,27 @@ export default {
 
           this.length = Math.ceil(this.allUsers.length/this.pageSize)
           this.displayUsers = this.allUsers.slice(0,this.pageSize)
+          const c = this.displayUsers
+          console.log(this.displayUsers)
+
+          for (const i in c) {
+            console.log(c[i])
+            return c[i]
+          }
         })
+    },
+    sortUsers(){
+      const c = this.displayUsers
+      for (const i in c) {
+        console.log(c[i].count)
+        return c[i].count
+      }
     },
     getCategoryNumber(category){
       return this.allUsers.filter(e => e.category == category.content).length
     },
     getCategoryData(category){
       this.displayUsers = this.allUsers.filter(e => e.category == category.content).slice(0,this.pageSize)
-      console.log(this.displayUsers)
       this.categoryUsers = this.allUsers.filter(e => e.category == category.content)
       this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
     },

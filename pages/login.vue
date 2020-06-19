@@ -48,18 +48,35 @@
               label="カテゴリー"
               dense
             ></v-select>
+            <v-select
+              v-model="user.tool"
+              item-text="name"
+              item-value="name"
+              :rules="toolRules"
+              :items="tools"
+              label="使用ツール"
+              multiple
+              dense
+            ></v-select>
+            <v-text-field
+              v-model="user.condition"
+              :rules="conditionRules"
+              counter="30"
+              label="希望条件"
+              outlined
+            ></v-text-field>
             <v-text-field
               v-model="user.summary"
               :rules="summaryRules"
               counter="30"
-              label="略歴"
+              label="自己PR等"
               outlined
             ></v-text-field>
             <v-text-field
               v-model="user.content"
               :rules="contentRules"
               counter="200"
-              label="経歴・自己PR等"
+              label="詳細"
               outlined
             ></v-text-field>
             <label class="postImage-appendBtn">
@@ -104,6 +121,8 @@ export default {
         summary: '',
         content:'',
         category:'',
+        condition:'',
+        tool:'',
       },
       icon:'',
       nameRules: [
@@ -113,10 +132,14 @@ export default {
         v => !!v || 'Summary is required',
       ],
       contentRules: [
-        // v => !!v || 'Content is required',
       ],
       categoryRules:[
         v => !!v || 'Category is required',
+      ],
+      conditionRules:[
+      ],
+      toolRules:[
+        v => !!v || 'Tool is required',
       ],
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -128,6 +151,11 @@ export default {
         { code: '03', name: '数学' },
         { code: '04', name: '理科' },
         { code: '03', name: '社会' },
+      ],
+      tools:[
+        {name:'zoom'},
+        {name:'skype'},
+        {name:'line'},
       ]
     }
   },
@@ -160,8 +188,10 @@ export default {
           name: this.user.name,
           email: this.user.email,
           category: this.user.category,
+          tool: this.user.tool,
           summary: this.user.summary,
           content: this.user.content,
+          condition: this.user.condition,
           icon: this.icon,
           count: 0,
           created_at: firebase.firestore.FieldValue.serverTimestamp()
