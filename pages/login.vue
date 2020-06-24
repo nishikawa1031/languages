@@ -24,8 +24,10 @@
         max-width="500"
         outlined
       >
+      <v-card-title>
+        新規登録
+      </v-card-title>
           <v-card-text>
-              名前、メールアドレス、指導可能科目、経歴・自己PR等を入力してください。
             <v-text-field
               v-model="user.name"
               :rules="nameRules"

@@ -149,7 +149,7 @@ export default {
       // allUsersLength:'',
       selectedUser:'',
       displayUsers:[],
-      pageSize: 4,
+      pageSize: 6,
       length:0,
       page: 1,
       categories:[
