@@ -49,6 +49,7 @@ export default {
         locales: [
           { code: 'ja', iso: 'ja_JP', file: 'ja.json' },
           { code: 'en', iso: 'en-US', file: 'en.json' },
+          { code: 'ko', iso: 'ko_KO', file: 'ko.json' },
         ],
         // デフォルトの言語を↑で定義したcodeで記載
         defaultLocale: 'ja',

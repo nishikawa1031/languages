@@ -7,5 +7,12 @@
   "condition":"condition",
   "become_teacher":"Become a teacher",
   "number_of_views":"number of views",
-  "summary":"summary"
+  "summary":"summary",
+  "loading":"loading",
+  "sing_up":"sign up",
+  "page":"'s page",
+  "close":"close",
+  "law":"Specified Commercial Transaction Act",
+  "googlelogin":"Login with Google account",
+  "navigate":"Choose langage you want to learn"
 }

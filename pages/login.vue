@@ -7,7 +7,7 @@
         max-width="500"
         outlined
       >
-        <p>読み込み中</p>
+        <p>{{ $t('loading') }}</p>
       </v-card>
       <div v-else>
       <v-card
@@ -16,7 +16,7 @@
         max-width="500"
         outlined
       >
-              <v-btn @click="googleLogin">Googleアカウントでログイン</v-btn>
+        <v-btn @click="googleLogin">{{ $t('googlelogin') }}</v-btn>
       </v-card>
       <v-card
         v-else
@@ -25,14 +25,14 @@
         outlined
       >
       <v-card-title>
-        新規登録
+        {{ $t('sing_up') }}
       </v-card-title>
           <v-card-text>
             <v-text-field
               v-model="user.name"
               :rules="nameRules"
               :counter="10"
-              label="お名前"
+              label="name"
               required
             ></v-text-field>
             <v-text-field
@@ -56,7 +56,7 @@
               item-value="name"
               :rules="toolRules"
               :items="tools"
-              label="使用ツール"
+              label="tool"
               multiple
               dense
             ></v-select>
@@ -93,7 +93,7 @@
       </v-card>
       <br>
       <v-layout justify-center>
-        <v-btn v-if="isLogin" @click="logOut">ログアウト</v-btn>
+        <v-btn v-if="isLogin" @click="logOut">Logout</v-btn>
 
       </v-layout>
       </div>

@@ -10,19 +10,14 @@
       md6
     >
     <v-row>
-<div>{{ $i18n.locale }}</div>
-        <div>
-          <nuxt-link :to="switchLocalePath('en')">English</nuxt-link>
-        </div>
-        <div>
-          <nuxt-link :to="switchLocalePath('ja')">日本語</nuxt-link>
-        </div>
-    {{ $t('message') }}
       <v-card class="mx-auto">
         <v-app-bar color="grey lighten-3">
           <v-tool-bar>
-            <v-btn text color="light-blue darken-1" fab><v-icon @click="getData();">mdi-reorder-horizontal</v-icon></v-btn>
+            {{ $t('navigate') }}
           </v-tool-bar>
+          <!-- <v-tool-bar>
+            <v-btn text color="light-blue darken-1" fab><v-icon @click="getData();">mdi-reorder-horizontal</v-icon></v-btn>
+          </v-tool-bar> -->
           <v-toolbar-items>
             <!-- 書き直す。 -->
             <v-btn
@@ -59,6 +54,12 @@
                       {{ $t('summary') }}：{{ user.summary }}
                     <br>
                       {{ $t('number_of_views') }}：{{ user.count }}
+                    <br>
+                      {{ $t('detail') }}：{{selectedUser.content}}
+                    <br>
+                      {{ $t('tool') }}：{{selectedUser.tool}}
+                    <br>
+                      {{ $t('condition') }}：{{selectedUser.condition}}
                   </v-list-item-subtitle>
 
                 </v-list-item-content>
@@ -74,14 +75,14 @@
 
               <v-card-actions>
                 <v-layout justify-center>
-                  <v-btn
+                  <!-- <v-btn
                     color="primary"
                     dark
                     @click.stop="dialog = true"
                     @click="passID(user);"
                   >
                     {{ $t('details') }}
-                  </v-btn>
+                  </v-btn> -->
                 </v-layout>
               </v-card-actions>
             </v-card>
@@ -100,7 +101,7 @@
           max-width="400"
         >
           <v-card>
-            <v-card-title class="title">{{selectedUser.name}}さんの詳細</v-card-title>
+            <v-card-title class="title">{{selectedUser.name}}{{ $t('page') }}</v-card-title>
 
             <v-card-text>
               {{ $t('detail') }}：{{selectedUser.content}}
@@ -133,11 +134,14 @@
                 text
                 @click="dialog = false"
               >
-                閉じる
+                {{ $t('close') }}
               </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
+        <!-- <div>{{ $i18n.locale }}</div> -->
+        <!-- {{ $t('message') }} -->
+
       </v-row>
     </v-flex>
   </v-layout>

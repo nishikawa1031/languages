@@ -14,6 +14,11 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items>
+          <nuxt-link :to="switchLocalePath('en')">English</nuxt-link>
+          <br>
+          <nuxt-link :to="switchLocalePath('ja')">日本語</nuxt-link>
+          <br>
+          <nuxt-link :to="switchLocalePath('ko')">한국</nuxt-link>
       </v-toolbar-items>
     </v-app-bar>
     <v-content>
@@ -32,7 +37,7 @@
         <v-col lg="1">
           <v-row><v-btn text to="">Privacy Policy</v-btn></v-row>
           <v-row><v-btn text to="">Terms of Use</v-btn></v-row>
-          <v-row><v-btn text to="">特定商取引法に基づく表記</v-btn></v-row>
+          <v-row><v-btn text to="">{{ $t('law') }}</v-btn></v-row>
         </v-col>
         <v-spacer></v-spacer>
       </v-row>
