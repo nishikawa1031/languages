@@ -47,7 +47,7 @@
               item-value="name"
               :rules="categoryRules"
               :items="categories"
-              label="カテゴリー"
+              label="教えることのできる言語"
               dense
             ></v-select>
             <v-select
@@ -149,10 +149,9 @@ export default {
       ],
       categories: [
         { code: '01', name: '英語' },
-        { code: '02', name: '国語' },
-        { code: '03', name: '数学' },
-        { code: '04', name: '理科' },
-        { code: '03', name: '社会' },
+        { code: '02', name: '日本語' },
+        { code: '03', name: '韓国語' },
+        { code: '04', name: '中国語' },
       ],
       tools:[
         {name:'zoom'},

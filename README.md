@@ -1,4 +1,4 @@
-# katekyo
+# langages
 
 > My mind-blowing Nuxt.js project
 

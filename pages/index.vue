@@ -10,6 +10,14 @@
       md6
     >
     <v-row>
+<div>{{ $i18n.locale }}</div>
+        <div>
+          <nuxt-link :to="switchLocalePath('en')">English</nuxt-link>
+        </div>
+        <div>
+          <nuxt-link :to="switchLocalePath('ja')">japanese</nuxt-link>
+        </div>
+    {{ $t('message') }}
       <v-card class="mx-auto">
         <v-app-bar color="grey lighten-3">
           <v-tool-bar>
@@ -46,7 +54,7 @@
                     {{ user.name }}
                   </v-list-item-title>
                   <v-list-item-subtitle>
-                      指導科目：{{ user.category }}
+                      {{ $t('can_teach') }}：{{ user.category }}
                     <br>
                       自己PR等：{{ user.summary }}
                     <br>
@@ -154,10 +162,9 @@ export default {
       page: 1,
       categories:[
         { content: '英語', created: '2019-03-31 15:30' },
-        { content: '国語', created: '2019-03-31 15:30' },
-        { content: '数学', created: '2019-03-31 15:30' },
-        { content: '理科', created: '2019-03-31 15:30' },
-        { content: '社会', created: '2019-03-31 15:30' }
+        { content: '日本語', created: '2019-03-31 15:30' },
+        { content: '韓国語', created: '2019-03-31 15:30' },
+        { content: '中国語', created: '2019-03-31 15:30' },
       ],
       user: {
         name: '',

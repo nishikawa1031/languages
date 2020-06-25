@@ -5,7 +5,7 @@
         <v-layout>
           <v-flex lg12>
               <!-- <v-col><Logo /></v-col> -->
-              <v-btn text to="/">Katekyo</v-btn>
+              <v-btn text to="/">Langages</v-btn>
           </v-flex>
         </v-layout>
       </v-toolbar-title>
