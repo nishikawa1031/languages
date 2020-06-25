@@ -10,7 +10,7 @@
         </v-layout>
       </v-toolbar-title>
       <v-toolbar-items>
-        <v-btn text to="/login">先生になる</v-btn>
+        <v-btn text to="/login">{{ $t('become_teacher') }}</v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items>

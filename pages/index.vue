@@ -15,7 +15,7 @@
           <nuxt-link :to="switchLocalePath('en')">English</nuxt-link>
         </div>
         <div>
-          <nuxt-link :to="switchLocalePath('ja')">japanese</nuxt-link>
+          <nuxt-link :to="switchLocalePath('ja')">日本語</nuxt-link>
         </div>
     {{ $t('message') }}
       <v-card class="mx-auto">
@@ -56,9 +56,9 @@
                   <v-list-item-subtitle>
                       {{ $t('can_teach') }}：{{ user.category }}
                     <br>
-                      自己PR等：{{ user.summary }}
+                      {{ $t('summary') }}：{{ user.summary }}
                     <br>
-                      閲覧数：{{ user.count }}
+                      {{ $t('number_of_views') }}：{{ user.count }}
                   </v-list-item-subtitle>
 
                 </v-list-item-content>
@@ -80,7 +80,7 @@
                     @click.stop="dialog = true"
                     @click="passID(user);"
                   >
-                    詳細を見る
+                    {{ $t('details') }}
                   </v-btn>
                 </v-layout>
               </v-card-actions>
@@ -103,11 +103,11 @@
             <v-card-title class="title">{{selectedUser.name}}さんの詳細</v-card-title>
 
             <v-card-text>
-              詳細：{{selectedUser.content}}
+              {{ $t('detail') }}：{{selectedUser.content}}
               <br>
-              使用ツール：{{selectedUser.tool}}
+              {{ $t('tool') }}：{{selectedUser.tool}}
               <br>
-              希望条件：{{selectedUser.condition}}
+              {{ $t('condition') }}：{{selectedUser.condition}}
             </v-card-text>
 
             <v-card-actions>

@@ -1,4 +1,11 @@
 {
   "message": "is English!",
-  "can_teach":"can teach"
+  "can_teach":"can teach",
+  "details":"details",
+  "detail":"details",
+  "tool":"tool",
+  "condition":"condition",
+  "become_teacher":"Become a teacher",
+  "number_of_views":"number of views",
+  "summary":"summary"
 }
