@@ -49,17 +49,20 @@
                     {{ user.name }}
                   </v-list-item-title>
                   <v-list-item-subtitle>
+                      {{user.langage}}のレベル:{{user.langageLevel}}
+                    <br>
                       {{ $t('can_teach') }}：{{ user.category }}
                     <br>
                       {{ $t('summary') }}：{{ user.summary }}
                     <br>
-                      {{ $t('number_of_views') }}：{{ user.count }}
+                      <!-- {{ $t('number_of_views') }}：{{ user.count }} -->
                     <br>
-                      {{ $t('detail') }}：{{selectedUser.content}}
+                      {{ $t('detail') }}：{{user.content}}
                     <br>
-                      {{ $t('tool') }}：{{selectedUser.tool}}
+                      {{ $t('tool') }}：{{user.tool}}
                     <br>
-                      {{ $t('condition') }}：{{selectedUser.condition}}
+                      {{ $t('condition') }}：{{user.condition}}
+
                   </v-list-item-subtitle>
 
                 </v-list-item-content>
@@ -96,7 +99,7 @@
             @input = "pageChange"
           ></v-pagination>
       <v-row justify="center">
-        <v-dialog
+        <!-- <v-dialog
           v-model="dialog"
           max-width="400"
         >
@@ -112,7 +115,7 @@
             </v-card-text>
 
             <v-card-actions>
-              <!-- <v-btn
+              <v-btn
                 color="primary"
                 dark
                 @click.stop="dialog = true"
@@ -127,7 +130,7 @@
                 @click="passID(user);"
               >
                 支払う
-              </v-btn> -->
+              </v-btn>
               <v-spacer></v-spacer>
               <v-btn
                 color="green darken-1"
@@ -138,7 +141,7 @@
               </v-btn>
             </v-card-actions>
           </v-card>
-        </v-dialog>
+        </v-dialog> -->
         <!-- <div>{{ $i18n.locale }}</div> -->
         <!-- {{ $t('message') }} -->
 
@@ -165,17 +168,19 @@ export default {
       length:0,
       page: 1,
       categories:[
-        { content: '英語', created: '2019-03-31 15:30' },
-        { content: '日本語', created: '2019-03-31 15:30' },
-        { content: '韓国語', created: '2019-03-31 15:30' },
-        { content: '中国語', created: '2019-03-31 15:30' },
+        { val:0 , content: '英語', created: '2019-03-31 15:30' },
+        { val:1 , content: '日本語', created: '2019-03-31 15:30' },
+        { val:2 , content: '韓国語', created: '2019-03-31 15:30' },
+        { val:3 , content: '中国語', created: '2019-03-31 15:30' },
       ],
       user: {
         name: '',
         email: '',
         summary: '',
+        content:'',
         category:'',
-        count:'',
+        condition:'',
+        tool:'',
       },
       name:'',
       email:'',
@@ -207,7 +212,6 @@ export default {
           })
           // this.allUsersLength = this.allUsers.length
 
-          this.length = Math.ceil(this.allUsers.length/this.pageSize)
           this.displayUsers = this.allUsers.slice(0,this.pageSize)
           const c = this.displayUsers
           console.log(this.displayUsers)
@@ -226,11 +230,11 @@ export default {
       }
     },
     getCategoryNumber(category){
-      return this.allUsers.filter(e => e.category == category.content).length
+      return this.allUsers.filter(e => e.category == category.val).length
     },
     getCategoryData(category){
-      this.displayUsers = this.allUsers.filter(e => e.category == category.content).slice(0,this.pageSize)
-      this.categoryUsers = this.allUsers.filter(e => e.category == category.content)
+      this.displayUsers = this.allUsers.filter(e => e.category == category.val).slice(0,this.pageSize)
+      this.categoryUsers = this.allUsers.filter(e => e.category == category.val)
       this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
     },
     passID(user){

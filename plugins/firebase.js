@@ -2,14 +2,14 @@ import firebase from 'firebase'
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
-    apiKey: "AIzaSyBJq7oA33bsLN9rQ9_rKizTRRHl0BPqUuE",
-    authDomain: "katekyo-1f493.firebaseapp.com",
-    databaseURL: "https://katekyo-1f493.firebaseio.com",
-    projectId: "katekyo-1f493",
-    storageBucket: "katekyo-1f493.appspot.com",
-    messagingSenderId: "187464010652",
-    appId: "1:187464010652:web:aa0145eccf3782989e9659",
-    measurementId: "G-QQ0C1F4FEJ"
+    apiKey: "AIzaSyDJIqFooelZUSuuWrs5DrkNo4Q4PJFk0MM",
+    authDomain: "langages-2d6f1.firebaseapp.com",
+    databaseURL: "https://langages-2d6f1.firebaseio.com",
+    projectId: "langages-2d6f1",
+    storageBucket: "langages-2d6f1.appspot.com",
+    messagingSenderId: "987364514834",
+    appId: "1:987364514834:web:0d0ed6c771907d8af84ccb",
+    measurementId: "G-VD9F1NWP0R"
   })
 }
 
