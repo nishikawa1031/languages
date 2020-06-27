@@ -2,9 +2,13 @@
   <v-container fluid>
     <v-layout justify-center>
     <v-row>
+      <v-btn v-if="isLogin" @click="logOut">Logout</v-btn>
+    </v-row>
+    <v-row>
         <ul>
           <li v-for="user in displayUsers" :key="user.id">
             <v-card
+              v-if="isLogin"
               class="mx-auto"
               max-width="344"
               outlined
@@ -45,14 +49,14 @@
 
               <v-card-actions>
                 <v-layout justify-center>
-                  <!-- <v-btn
+                  <v-btn
                     color="primary"
                     dark
                     @click.stop="dialog = true"
                     @click="passID(user);"
                   >
-                    {{ $t('details') }}
-                  </v-btn> -->
+                    {{ $t('edit') }}
+                  </v-btn>
                 </v-layout>
               </v-card-actions>
             </v-card>
@@ -170,10 +174,7 @@
         </v-card-actions>
       </v-card>
       <br>
-      <v-row>
-        <v-btn v-if="isLogin" @click="logOut">Logout</v-btn>
 
-      </v-row>
 
       </div>
     </v-layout>

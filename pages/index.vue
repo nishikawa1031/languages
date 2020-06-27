@@ -86,6 +86,23 @@
                   >
                     {{ $t('details') }}
                   </v-btn> -->
+                  <v-btn
+                    to="/message"
+                    color="primary"
+                    dark
+                    @click.stop="dialog = true"
+                  >
+                    メッセージを送る
+                  </v-btn>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    color="primary"
+                    dark
+                    @click.stop="dialog = true"
+                    @click="passID(user);"
+                  >
+                    支払う
+                  </v-btn>
                 </v-layout>
               </v-card-actions>
             </v-card>
@@ -115,22 +132,7 @@
             </v-card-text>
 
             <v-card-actions>
-              <v-btn
-                color="primary"
-                dark
-                @click.stop="dialog = true"
-                @click="passID(user);"
-              >
-                メッセージ
-              </v-btn>
-              <v-btn
-                color="primary"
-                dark
-                @click.stop="dialog = true"
-                @click="passID(user);"
-              >
-                支払う
-              </v-btn>
+
               <v-spacer></v-spacer>
               <v-btn
                 color="green darken-1"
