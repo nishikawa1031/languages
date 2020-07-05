@@ -21,13 +21,13 @@
           <v-toolbar-items>
             <!-- 書き直す。 -->
             <v-btn
-              v-for="(category, index) in categories"
+              v-for="(category, index) in $t('langage.items')"
               :key="index"
               text
               color="light-blue darken-1"
               @click="getCategoryData(category);"
             >
-              {{ category.content }}<br>({{getCategoryNumber(category)}})
+              {{ category.name }}<br>({{getCategoryNumber(category)}})
             </v-btn>
           </v-toolbar-items>
         </v-app-bar>
@@ -168,12 +168,6 @@ export default {
       pageSize: 6,
       length:0,
       page: 1,
-      categories:[
-        { val:0 , content: '英語', created: '2019-03-31 15:30' },
-        { val:1 , content: '日本語', created: '2019-03-31 15:30' },
-        { val:2 , content: '韓国語', created: '2019-03-31 15:30' },
-        { val:3 , content: '中国語', created: '2019-03-31 15:30' },
-      ],
       user: {
         name: '',
         email: '',

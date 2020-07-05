@@ -96,8 +96,8 @@
                 item-text="name"
                 item-value="val"
                 :rules="langageRules"
-                :items="langages"
-                :label="$t('usingLangage')"
+                :items="$t('langage.items')"
+                :label="$t('langage.label')"
                 dense
               ></v-select>
               <v-select
@@ -115,7 +115,7 @@
                 item-text="name"
                 item-value="val"
                 :rules="categoryRules"
-                :items="categories"
+                :items="$t('langage.items')"
                 :label="$t('whatLangageYotTeach')"
                 dense
               ></v-select>
@@ -236,18 +236,6 @@ export default {
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid',
-      ],
-      langages: [
-        { val: 0, name: '英語' },
-        { val: 1, name: '日本語' },
-        { val: 2, name: '韓国語' },
-        { val: 3, name: '中国語' },
-      ],
-      categories: [
-        { val: 0, name: '英語' },
-        { val: 1, name: '日本語' },
-        { val: 2, name: '韓国語' },
-        { val: 3, name: '中国語' },
       ],
       tools:[
         {name:'zoom'},
