@@ -105,8 +105,8 @@
                 item-text="name"
                 item-value="val"
                 :rules="langageLevelRules"
-                :items="langagesLevel"
-                :label="$t('langageLevel')"
+                :items="$t('langageLevel.items')"
+                :label="$t('langageLevel.label')"
                 dense
               ></v-select>
 
@@ -242,13 +242,6 @@ export default {
         { val: 1, name: '日本語' },
         { val: 2, name: '韓国語' },
         { val: 3, name: '中国語' },
-      ],
-      langagesLevel: [
-        {val:0, name: 'ほとんどわかりません。'},
-        {val:1, name: '簡単な挨拶ができるぐらいです'},
-        {val:2, name: '簡単なコミュニケーションならとれます'},
-        {val:3, name: 'ある程度の日常会話ができます'},
-        {val:4, name: 'ほとんど問題なくコミュニケーションが取れます'},
       ],
       categories: [
         { val: 0, name: '英語' },
