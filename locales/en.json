@@ -1,5 +1,4 @@
 {
-  "message": "is English!",
   "can_teach":"can teach",
   "details":"details",
   "detail":"details",
@@ -49,5 +48,7 @@
   "whatLangageYotTeach":"What langage you teach?",
   "name":"name",
   "picture":"select picture",
-  "submit":"submit"
+  "submit":"submit",
+  "message":"send message",
+  "contract":"contract"
 }

@@ -1,5 +1,4 @@
 {
-  "message": "日本語だよ！",
   "can_teach":"教えられる言語",
   "details":"詳細を見る",
   "detail":"詳細",
@@ -49,5 +48,7 @@
   "whatLangageYotTeach":"何語を教えますか？",
   "name":"名前",
   "picture":"画像の添付",
-  "submit":"送信"
+  "submit":"送信",
+  "message":"メッセージを送る",
+  "contract":"契約する"
 }

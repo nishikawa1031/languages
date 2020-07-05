@@ -91,7 +91,7 @@
                     dark
                     @click="message(user);"
                   >
-                    メッセージを送る
+                    {{ $t('message') }}
                   </v-btn>
                   <v-spacer></v-spacer>
                   <v-btn
@@ -100,7 +100,7 @@
                     @click.stop="dialog = true"
                     @click="passID(user);"
                   >
-                    支払う
+                    {{ $t('contract') }}
                   </v-btn>
                 </v-layout>
               </v-card-actions>
