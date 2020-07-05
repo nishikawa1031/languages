@@ -171,6 +171,8 @@ export default {
     }
   },
   mounted() {
+    console.log(this.$route.params['id'])
+    console.log("テスト")
     this.getData();
 
     firebase.auth().onAuthStateChanged((user) => {
