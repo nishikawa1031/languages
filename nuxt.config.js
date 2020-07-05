@@ -47,9 +47,9 @@ export default {
         strategy: 'prefix_and_default',
         // 切り替える言語を定義
         locales: [
-          { code: 'ja', iso: 'ja_JP', file: 'ja.json' },
-          { code: 'en', iso: 'en-US', file: 'en.json' },
-          { code: 'ko', iso: 'ko_KO', file: 'ko.json' },
+          { code: 'ja', iso: 'ja_JP', file: 'ja.json' ,name: '日本語'},
+          { code: 'en', iso: 'en-US', file: 'en.json' ,name: 'English'},
+          { code: 'ko', iso: 'ko_KO', file: 'ko.json' ,name: '한국'},
         ],
         // デフォルトの言語を↑で定義したcodeで記載
         defaultLocale: 'ja',

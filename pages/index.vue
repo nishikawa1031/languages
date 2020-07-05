@@ -18,7 +18,6 @@
           <v-tool-bar>
             {{ $t('navigate') }}
           </v-tool-bar>
-
           <v-toolbar-items>
             <v-btn
               v-for="(category, index) in $t('langage.items')"
@@ -49,9 +48,9 @@
                     {{ user.name }}
                   </v-list-item-title>
                   <v-list-item-subtitle>
-                      {{$t('langage.items')}}
+                      <!-- {{$t('langage.items')}} -->
                     <br>
-                      <!-- {{displayLangage(user.langage)}} -->
+                      {{displayLangage(user.langage)}}
                       {{user.langage}}のレベル:{{user.langageLevel}}
                     <br>
                       {{ $t('can_teach') }}：{{ user.category }}
@@ -235,11 +234,11 @@ export default {
       this.categoryUsers = this.allUsers.filter(e => e.category == category.val)
       this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
     },
-    // displayLangage(langage){
-    //   if $t('langage.items').val == langage{
-    //     return  $t('langage.items').name
-    //   }
-    // },
+    displayLangage(langage){
+      // if ($t('langage.items').val == langage){
+      //   return  $t('langage.items').name
+      // }
+    },
     message(user){
       console.log(user.id)
       this.$router.push('/users/' + user.id)

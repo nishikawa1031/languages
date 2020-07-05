@@ -14,11 +14,12 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-          <nuxt-link :to="switchLocalePath('en')">English</nuxt-link>
-          <br>
-          <nuxt-link :to="switchLocalePath('ja')">日本語</nuxt-link>
-          <br>
-          <nuxt-link :to="switchLocalePath('ko')">한국</nuxt-link>
+          <v-btn
+            text
+            v-for="locale in availableLocales"
+            :key="locale.code"
+            :to="switchLocalePath(locale.code)">{{ locale.name }}
+          </v-btn>
       </v-toolbar-items>
     </v-app-bar>
     <v-content>
@@ -33,7 +34,9 @@
           <v-row><v-btn text to="">News</v-btn></v-row>
           <v-row><v-btn text to="">Contact Us</v-btn></v-row>
         </v-col>
-        <v-col lg="1"></v-col>
+        <v-col lg="1">
+
+        </v-col>
         <v-col lg="1">
           <v-row><v-btn text to="">Privacy Policy</v-btn></v-row>
           <v-row><v-btn text to="">Terms of Use</v-btn></v-row>
@@ -75,6 +78,11 @@ export default {
   data() {
     return {
       fixed: false
+    }
+  },
+  computed: {
+    availableLocales () {
+      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
     }
   },
   methods: {
