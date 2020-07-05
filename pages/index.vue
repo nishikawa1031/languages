@@ -13,13 +13,13 @@
       <v-card class="mx-auto">
         <v-app-bar color="grey lighten-3">
           <v-tool-bar>
+            <v-btn text color="light-blue darken-1" fab><v-icon @click="getData();">mdi-reorder-horizontal</v-icon></v-btn>
+          </v-tool-bar>
+          <v-tool-bar>
             {{ $t('navigate') }}
           </v-tool-bar>
-          <!-- <v-tool-bar>
-            <v-btn text color="light-blue darken-1" fab><v-icon @click="getData();">mdi-reorder-horizontal</v-icon></v-btn>
-          </v-tool-bar> -->
+
           <v-toolbar-items>
-            <!-- 書き直す。 -->
             <v-btn
               v-for="(category, index) in $t('langage.items')"
               :key="index"
@@ -233,9 +233,8 @@ export default {
       this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
     },
     message(user){
-      let Id = user.id
-      console.log(Id)
-      this.$router.push({path:'/users',params:{Id}})
+      console.log(user.id)
+      this.$router.push({name:'users-id',params:{id:user.id}})
     },
     passID(user){
       this.selectedUser = user
