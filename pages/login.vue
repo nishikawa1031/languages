@@ -97,7 +97,7 @@
                 item-value="val"
                 :rules="langageRules"
                 :items="langages"
-                label="このページを何語で入力しますか？"
+                :label="$t('usingLangage')"
                 dense
               ></v-select>
               <v-select
@@ -106,7 +106,7 @@
                 item-value="val"
                 :rules="langageLevelRules"
                 :items="langagesLevel"
-                label="その言語レベル"
+                :label="$t('langageLevel')"
                 dense
               ></v-select>
 
@@ -116,21 +116,21 @@
                 item-value="val"
                 :rules="categoryRules"
                 :items="categories"
-                label="何語を教えますか？"
+                :label="$t('whatLangageYotTeach')"
                 dense
               ></v-select>
               <v-text-field
                 v-model="user.summary"
                 :rules="summaryRules"
                 counter="30"
-                label="自己PR等"
+                :label="$t('summary')"
                 outlined
               ></v-text-field>
               <v-text-field
                 v-model="user.name"
                 :rules="nameRules"
                 :counter="10"
-                label="name"
+                :label="$t('name')"
                 required
               ></v-text-field>
               <!-- <v-text-field
@@ -145,7 +145,7 @@
                 item-value="name"
                 :rules="toolRules"
                 :items="tools"
-                label="tool"
+                :label="$t('tool')"
                 multiple
                 dense
               ></v-select>
@@ -153,23 +153,23 @@
                 v-model="user.condition"
                 :rules="conditionRules"
                 counter="30"
-                label="希望条件"
+                :label="$t('condition')"
                 outlined
               ></v-text-field>
               <v-text-field
                 v-model="user.content"
                 :rules="contentRules"
                 counter="200"
-                label="詳細"
+                :label="$t('detail')"
                 outlined
               ></v-text-field>
               <label class="postImage-appendBtn">
-                <input @change="upload" type="file" data-label="画像の添付">
+                <input @change="upload" type="file" :data-label="$t('picture')">
               </label>
           </v-card-text>
         <v-card-actions>
           <v-btn @click="submit()">
-            Submit
+            {{$t('submit')}}
           </v-btn>
         </v-card-actions>
       </v-card>

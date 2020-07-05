@@ -16,5 +16,12 @@
   "googlelogin":"Login with Google account",
   "navigate":"Choose langage you want to learn",
   "english":"english",
-  "edit":"edit"
+  "edit":"edit",
+  "example":"Use Japanese when you want to teach English for Japanese people",
+  "usingLangage":"what langage you use?",
+  "langageLevel":"level of that langage",
+  "whatLangageYotTeach":"What langage you teach?",
+  "name":"name",
+  "picture":"select picture",
+  "submit":"submit"
 }
