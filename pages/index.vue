@@ -87,10 +87,9 @@
                     {{ $t('details') }}
                   </v-btn> -->
                   <v-btn
-                    to="/message"
                     color="primary"
                     dark
-                    @click.stop="dialog = true"
+                    @click="message(user);"
                   >
                     メッセージを送る
                   </v-btn>
@@ -238,6 +237,11 @@ export default {
       this.displayUsers = this.allUsers.filter(e => e.category == category.val).slice(0,this.pageSize)
       this.categoryUsers = this.allUsers.filter(e => e.category == category.val)
       this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
+    },
+    message(user){
+      let Id = user.id
+      console.log(Id)
+      this.$router.push({path:'/users',params:{Id}})
     },
     passID(user){
       this.selectedUser = user
