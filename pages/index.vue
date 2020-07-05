@@ -58,7 +58,7 @@
                     <br>
                       {{ $t('summary') }}：{{ user.summary }}
                     <br>
-                      <!-- {{ $t('number_of_views') }}：{{ user.count }} -->
+                      {{ $t('number_of_views') }}：{{ user.count }}
                     <br>
                       {{ $t('detail') }}：{{user.content}}
                     <br>
