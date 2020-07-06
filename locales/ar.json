@@ -1,0 +1,54 @@
+{
+  "can_teach":"can teach",
+  "details":"details",
+  "detail":"details",
+  "tool":"الأدوات المستخدمة",
+  "condition":"condition",
+  "become_teacher":"يصبح مدرسا",
+  "number_of_views":"عدد المشاهدات",
+  "summary":"عرف نفسك قدم نفسك",
+  "loading":"جار التحميل",
+  "sing_up":"سجل",
+  "page":"'s page",
+  "close":"أغلق",
+  "law":"Specified Commercial Transaction Act",
+  "googlelogin":"تسجيل الدخول بحساب Google الخاص بك",
+  "navigate":"Choose langage you want to learn",
+  "english":"english",
+  "edit":"تعديل",
+  "example":"Use Japanese when you want to teach English for Japanese people",
+  "langage": {
+    "label":"what langage you use?",
+    "items":[
+      { "val": 0, "name": "الإنجليزية" },
+      { "val": 1, "name": "اليابانية" },
+      { "val": 2, "name": "الكورية" },
+      { "val": 3, "name": "صينى" }
+    ]
+  },
+  "langageLevel":{
+    "label":"level of that langage",
+    "items":[{
+      "name": "ほとんどわかりません。",
+      "val": "0"
+    }, {
+      "name": "簡単な挨拶ができるぐらいです",
+      "val": "1"
+    }, {
+      "name": "簡単なコミュニケーションならとれます",
+      "val": "2"
+    }, {
+      "name": "ある程度の日常会話ができます",
+      "val": "3"
+    }, {
+      "name": "ほとんど問題なくコミュニケーションが取れます",
+      "val": "4"
+    }]
+  },
+  "whatLangageYotTeach":"What langage you teach?",
+  "name":"اسم",
+  "picture":"select picture",
+  "submit":"إرسال",
+  "message":"ارسل رسالة",
+  "contract":"contract"
+}

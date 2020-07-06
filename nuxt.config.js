@@ -50,6 +50,7 @@ export default {
           { code: 'ja', iso: 'ja_JP', file: 'ja.json' ,name: '日本語'},
           { code: 'en', iso: 'en-US', file: 'en.json' ,name: 'English'},
           { code: 'ko', iso: 'ko_KO', file: 'ko.json' ,name: '한국'},
+          { code: 'ar', iso: 'ar_AR', file: 'ar.json' ,name: 'عربى'},
         ],
         // デフォルトの言語を↑で定義したcodeで記載
         defaultLocale: 'ja',
