@@ -20,7 +20,7 @@
                     {{ user.name }}
                   </v-list-item-title>
                   <v-list-item-subtitle>
-                      {{user.langage}}のレベル:{{user.langageLevel}}
+                      {{user.language}}のレベル:{{user.languageLevel}}
                     <br>
                       {{ $t('can_teach') }}：{{ user.category }}
                     <br>
@@ -92,21 +92,21 @@
           <v-card-text>
                 <v-card-subtitle>{{ $t('example') }}</v-card-subtitle>
               <v-select
-                v-model="user.langage"
+                v-model="user.language"
                 item-text="name"
                 item-value="val"
-                :rules="langageRules"
-                :items="$t('langage.items')"
-                :label="$t('langage.label')"
+                :rules="languageRules"
+                :items="$t('language.items')"
+                :label="$t('language.label')"
                 dense
               ></v-select>
               <v-select
-                v-model="user.langageLevel"
+                v-model="user.languageLevel"
                 item-text="name"
                 item-value="val"
-                :rules="langageLevelRules"
-                :items="$t('langageLevel.items')"
-                :label="$t('langageLevel.label')"
+                :rules="languageLevelRules"
+                :items="$t('languageLevel.items')"
+                :label="$t('languageLevel.label')"
                 dense
               ></v-select>
 
@@ -115,8 +115,8 @@
                 item-text="name"
                 item-value="val"
                 :rules="categoryRules"
-                :items="$t('langage.items')"
-                :label="$t('whatLangageYotTeach')"
+                :items="$t('language.items')"
+                :label="$t('whatlanguageYotTeach')"
                 dense
               ></v-select>
               <v-text-field
@@ -181,21 +181,21 @@
             <v-card-title class="title">{{selectedUser.name}}{{ $t('editTitle') }}</v-card-title>
           <v-card-text>
               <v-select
-                v-model="user.langage"
+                v-model="user.language"
                 item-text="name"
                 item-value="val"
-                :rules="langageRules"
-                :items="$t('langage.items')"
-                :label="$t('langage.label')"
+                :rules="languageRules"
+                :items="$t('language.items')"
+                :label="$t('language.label')"
                 dense
               ></v-select>
               <v-select
-                v-model="user.langageLevel"
+                v-model="user.languageLevel"
                 item-text="name"
                 item-value="val"
-                :rules="langageLevelRules"
-                :items="$t('langageLevel.items')"
-                :label="$t('langageLevel.label')"
+                :rules="languageLevelRules"
+                :items="$t('languageLevel.items')"
+                :label="$t('languageLevel.label')"
                 dense
               ></v-select>
 
@@ -204,8 +204,8 @@
                 item-text="name"
                 item-value="val"
                 :rules="categoryRules"
-                :items="$t('langage.items')"
-                :label="$t('whatLangageYotTeach')"
+                :items="$t('language.items')"
+                :label="$t('whatlanguageYotTeach')"
                 dense
               ></v-select>
               <v-text-field
@@ -299,8 +299,8 @@ export default {
       user: {
         name: '',
         email: '',
-        langage:'',
-        langageLevel:'',
+        language:'',
+        languageLevel:'',
         summary: '',
         content:'',
         category:'',
@@ -316,11 +316,11 @@ export default {
       ],
       contentRules: [
       ],
-      langageRules:[
-        v => !!v || 'Langage is required',
+      languageRules:[
+        v => !!v || 'language is required',
       ],
-      langageLevelRules:[
-        v => !!v || 'Langage Level is required',
+      languageLevelRules:[
+        v => !!v || 'language Level is required',
       ],
       categoryRules:[
         v => !!v || 'Category is required',
@@ -387,8 +387,8 @@ export default {
           id: "",
           name: this.user.name,
           email: this.user.email,
-          langage:this.user.langage,
-          langageLevel:this.user.langageLevel,
+          language:this.user.language,
+          languageLevel:this.user.languageLevel,
           category: this.user.category,
           tool: this.user.tool,
           summary: this.user.summary,

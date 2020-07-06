@@ -13,12 +13,12 @@
   "close":"close",
   "law":"Specified Commercial Transaction Act",
   "googlelogin":"Login with Google account",
-  "navigate":"Choose langage you want to learn",
+  "navigate":"Choose language you want to learn",
   "english":"english",
   "edit":"edit",
   "example":"Use Japanese when you want to teach English for Japanese people",
-  "langage": {
-    "label":"what langage you use?",
+  "language": {
+    "label":"what language you use?",
     "items":[
       { "val": 0, "name": "English" },
       { "val": 1, "name": "Japanese" },
@@ -26,8 +26,8 @@
       { "val": 3, "name": "Chinese" }
     ]
   },
-  "langageLevel":{
-    "label":"level of that langage",
+  "languageLevel":{
+    "label":"level of that language",
     "items":[{
       "name": "ほとんどわかりません。",
       "val": "0"
@@ -45,7 +45,7 @@
       "val": "4"
     }]
   },
-  "whatLangageYotTeach":"What langage you teach?",
+  "whatlanguageYotTeach":"What language you teach?",
   "name":"name",
   "picture":"select picture",
   "submit":"submit",

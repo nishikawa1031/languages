@@ -20,7 +20,7 @@
           </v-tool-bar>
           <v-toolbar-items>
             <v-btn
-              v-for="(category, index) in $t('langage.items')"
+              v-for="(category, index) in $t('language.items')"
               :key="index"
               text
               color="light-blue darken-1"
@@ -48,11 +48,11 @@
                     {{ user.name }}
                   </v-list-item-title>
                   <v-list-item-subtitle>
-                      <!-- {{$t('langage.items')}} -->
+                      <!-- {{$t('language.items')}} -->
                     <br>
-                      {{ $t('langage.items') }}
-                      {{displayLangage(user.langage).name}}
-                      {{user.langage}}のレベル:{{user.langageLevel}}
+                      {{ $t('language.items') }}
+                      {{displaylanguage(user.language).name}}
+                      {{user.language}}のレベル:{{user.languageLevel}}
                     <br>
                       {{ $t('can_teach') }}：{{ user.category }}
                     <br>
@@ -196,6 +196,12 @@ export default {
   mounted(){
     this.getData();
     this.sortUsers();
+    // console.log(this.$i18n.locale)
+    // console.log(this.$t)
+    // console.log(this.$t.language)
+    // console.log(this.$t.language.items)
+    // console.log(this.$t.language.items[0].val)
+    console.log(this.$t.language.items[0].name)
   },
   created(){
   },
@@ -214,10 +220,10 @@ export default {
 
           this.displayUsers = this.allUsers.slice(0,this.pageSize)
           const c = this.displayUsers
-          console.log(this.displayUsers)
+          // console.log(this.displayUsers)
 
           for (const i in c) {
-            console.log(c[i])
+            // console.log(c[i])
             return c[i]
           }
         })
@@ -225,7 +231,7 @@ export default {
     sortUsers(){
       const c = this.displayUsers
       for (const i in c) {
-        console.log(c[i].count)
+        // console.log(c[i].count)
         return c[i].count
       }
     },
@@ -237,11 +243,11 @@ export default {
       this.categoryUsers = this.allUsers.filter(e => e.category == category.val)
       this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
     },
-    displayLangage(langageNumber){
-      return this.$i18n.langage.itmes.filter(i => i.val == langageNumber)
+    displaylanguage(languageNumber){
+      return this.$i18n.language.itmes.filter(i => i.val == languageNumber)
     },
     message(user){
-      console.log(user.id)
+      // console.log(user.id)
       this.$router.push('/users/' + user.id)
     },
     passID(user){
@@ -258,12 +264,12 @@ export default {
           count: this.selectedUser.count,
         })
         .then((ref) => {
-          console.log(this.selectedUser.count)
+          // console.log(this.selectedUser.count)
           pageChange(pageNumber)
         })
     },
     pageChange(pageNumber){
-      console.log(pageNumber)
+      // console.log(pageNumber)
       this.displayUsers = this.allUsers.slice(this.pageSize*(pageNumber -1), this.pageSize*(pageNumber));
     }
   }

@@ -13,12 +13,12 @@
   "close":"أغلق",
   "law":"Specified Commercial Transaction Act",
   "googlelogin":"تسجيل الدخول بحساب Google الخاص بك",
-  "navigate":"Choose langage you want to learn",
+  "navigate":"Choose language you want to learn",
   "english":"english",
   "edit":"تعديل",
   "example":"Use Japanese when you want to teach English for Japanese people",
-  "langage": {
-    "label":"what langage you use?",
+  "language": {
+    "label":"what language you use?",
     "items":[
       { "val": 0, "name": "الإنجليزية" },
       { "val": 1, "name": "اليابانية" },
@@ -26,8 +26,8 @@
       { "val": 3, "name": "صينى" }
     ]
   },
-  "langageLevel":{
-    "label":"level of that langage",
+  "languageLevel":{
+    "label":"level of that language",
     "items":[{
       "name": "ほとんどわかりません。",
       "val": "0"
@@ -45,7 +45,7 @@
       "val": "4"
     }]
   },
-  "whatLangageYotTeach":"What langage you teach?",
+  "whatlanguageYotTeach":"What language you teach?",
   "name":"اسم",
   "picture":"select picture",
   "submit":"إرسال",

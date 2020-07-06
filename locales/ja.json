@@ -17,7 +17,7 @@
   "english":"英語",
   "edit":"編集",
   "example":"例えば、英語圏の人に日本語を教えたい場合、英語で入力してください。",
-  "langage": {
+  "language": {
     "label":"このページを何語で入力しますか？",
     "items":[
       { "val": 0, "name": "英語" },
@@ -26,7 +26,7 @@
       { "val": 3, "name": "中国語" }
     ]
   },
-  "langageLevel":{
+  "languageLevel":{
     "label":"その言語のレベル",
     "items":[{
       "name": "ほとんどわかりません。",
@@ -45,7 +45,7 @@
       "val": 4
     }]
   },
-  "whatLangageYotTeach":"何語を教えますか？",
+  "whatlanguageYotTeach":"何語を教えますか？",
   "name":"名前",
   "picture":"画像の添付",
   "submit":"送信",

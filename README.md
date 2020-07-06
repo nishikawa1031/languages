@@ -1,4 +1,4 @@
-# langages
+# languages
 
 > My mind-blowing Nuxt.js project
 

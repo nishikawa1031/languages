@@ -20,7 +20,7 @@
                     {{ user.name }}
                   </v-list-item-title>
                   <v-list-item-subtitle>
-                      {{user.langage}}のレベル:{{user.langageLevel}}
+                      {{user.language}}のレベル:{{user.languageLevel}}
                     <br>
                       {{ $t('can_teach') }}：{{ user.category }}
                     <br>
@@ -109,8 +109,8 @@ export default {
       user: {
         name: '',
         email: '',
-        langage:'',
-        langageLevel:'',
+        language:'',
+        languageLevel:'',
         summary: '',
         content:'',
         category:'',
@@ -126,11 +126,11 @@ export default {
       ],
       contentRules: [
       ],
-      langageRules:[
-        v => !!v || 'Langage is required',
+      languageRules:[
+        v => !!v || 'language is required',
       ],
-      langageLevelRules:[
-        v => !!v || 'Langage Level is required',
+      languageLevelRules:[
+        v => !!v || 'language Level is required',
       ],
       categoryRules:[
         v => !!v || 'Category is required',
@@ -144,13 +144,13 @@ export default {
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
-      langages: [
+      languages: [
         { val: 0, name: '英語' },
         { val: 1, name: '日本語' },
         { val: 2, name: '韓国語' },
         { val: 3, name: '中国語' },
       ],
-      langagesLevel: [
+      languagesLevel: [
         {val:0, name: 'ほとんどわかりません。'},
         {val:1, name: '簡単な挨拶ができるぐらいです'},
         {val:2, name: '簡単なコミュニケーションならとれます'},
