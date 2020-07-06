@@ -198,10 +198,11 @@ export default {
     this.sortUsers();
     // console.log(this.$i18n.locale)
     // console.log(this.$t)
-    // console.log(this.$t.language)
-    // console.log(this.$t.language.items)
-    // console.log(this.$t.language.items[0].val)
-    console.log(this.$t.language.items[0].name)
+    console.log(this.$t('language.items'))
+    console.log(this.$t('language.items[0].name'))
+    console.log(this.$t('language.items[0].val'))
+    // console.log(this.$t.language.items[0].name)
+    console.log('$t(\'message\')', this.$t('message'))
   },
   created(){
   },
