@@ -53,7 +53,7 @@
                     color="primary"
                     dark
                     @click.stop="dialog = true"
-                    @click="passID(user);"
+                    @click="edit(user);"
                   >
                     {{ $t('edit') }}
                   </v-btn>
@@ -174,7 +174,103 @@
         </v-card-actions>
       </v-card>
       <br>
+        <v-dialog
+          v-model="dialog"
+        >
+          <v-card>
+            <v-card-title class="title">{{selectedUser.name}}{{ $t('editTitle') }}</v-card-title>
+          <v-card-text>
+              <v-select
+                v-model="user.langage"
+                item-text="name"
+                item-value="val"
+                :rules="langageRules"
+                :items="$t('langage.items')"
+                :label="$t('langage.label')"
+                dense
+              ></v-select>
+              <v-select
+                v-model="user.langageLevel"
+                item-text="name"
+                item-value="val"
+                :rules="langageLevelRules"
+                :items="$t('langageLevel.items')"
+                :label="$t('langageLevel.label')"
+                dense
+              ></v-select>
 
+              <v-select
+                v-model="user.category"
+                item-text="name"
+                item-value="val"
+                :rules="categoryRules"
+                :items="$t('langage.items')"
+                :label="$t('whatLangageYotTeach')"
+                dense
+              ></v-select>
+              <v-text-field
+                v-model="user.summary"
+                :rules="summaryRules"
+                counter="30"
+                :label="$t('summary')"
+                outlined
+              ></v-text-field>
+              <v-text-field
+                v-model="user.name"
+                :rules="nameRules"
+                :counter="10"
+                :label="$t('name')"
+                required
+              ></v-text-field>
+              <!-- <v-text-field
+                v-model="user.email"
+                :rules="emailRules"
+                label="E-mail"
+                required
+              ></v-text-field> -->
+              <v-select
+                v-model="user.tool"
+                item-text="name"
+                item-value="name"
+                :rules="toolRules"
+                :items="tools"
+                :label="$t('tool')"
+                multiple
+                dense
+              ></v-select>
+              <v-text-field
+                v-model="user.condition"
+                :rules="conditionRules"
+                counter="30"
+                :label="$t('condition')"
+                outlined
+              ></v-text-field>
+              <v-text-field
+                v-model="user.content"
+                :rules="contentRules"
+                counter="200"
+                :label="$t('detail')"
+                outlined
+              ></v-text-field>
+              <label class="postImage-appendBtn">
+                <input @change="upload" type="file" :data-label="$t('picture')">
+              </label>
+          </v-card-text>
+        <v-card-actions>
+          <v-btn @click="submit()">
+            {{$t('submit')}}
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="green darken-1"
+            text
+            @click="dialog = false"
+          >
+            {{ $t('close') }}
+          </v-btn>
+        </v-card-actions>
+          </v-card>
+        </v-dialog>
 
       </div>
     </v-layout>
@@ -196,6 +292,7 @@ export default {
     return {
       allUsers: [],
       displayUsers:[],
+      selectedUser:'',
       file:{
         name:"",
       },
@@ -241,7 +338,8 @@ export default {
         {name:'zoom'},
         {name:'skype'},
         {name:'line'},
-      ]
+      ],
+      dialog: false,
     }
   },
   mounted() {
@@ -326,6 +424,9 @@ export default {
                 console.log(error)
             })
         })
+    },
+    edit(user){
+      this.selectedUser = user
     }
   }
 }
