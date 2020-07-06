@@ -51,7 +51,7 @@
                       <!-- {{$t('language.items')}} -->
 
                     <br>
-                      {{displaylanguage(user.language)}}のレベル:{{user.languageLevel}}
+                      {{displaylanguage(user.language)}}のレベル:{{displaylanguageLevel(user.languageLevel)}}
                     <br>
                       {{ $t('can_teach') }}：{{displaylanguage(user.category)}}
                     <br>
@@ -237,8 +237,12 @@ export default {
       this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
     },
     displaylanguage(languageNumber){
-      this.selectedLangage = this.$t('language.items').filter(i => i.val == languageNumber)
-      return this.selectedLangage[0].name
+      this.selectedLanguage = this.$t('language.items').filter(i => i.val == languageNumber)
+      return this.selectedLanguage[0].name
+    },
+    displaylanguageLevel(languageLevelNumber){
+      this.selectedLanguage = this.$t('languageLevel.items').filter(i => i.val == languageLevelNumber)
+      return this.selectedLanguage[0].name
     },
     message(user){
       // console.log(user.id)
