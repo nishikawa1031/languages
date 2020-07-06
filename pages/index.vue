@@ -50,7 +50,8 @@
                   <v-list-item-subtitle>
                       <!-- {{$t('langage.items')}} -->
                     <br>
-                      {{displayLangage(user.langage)}}
+                      {{ $t('langage.items') }}
+                      {{displayLangage(user.langage).name}}
                       {{user.langage}}のレベル:{{user.langageLevel}}
                     <br>
                       {{ $t('can_teach') }}：{{ user.category }}
@@ -158,6 +159,8 @@ import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 import firebase from '@/plugins/firebase'
 
+// import { i18n } from ''
+
 
 
 export default {
@@ -234,10 +237,8 @@ export default {
       this.categoryUsers = this.allUsers.filter(e => e.category == category.val)
       this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
     },
-    displayLangage(langage){
-      // if ($t('langage.items').val == langage){
-      //   return  $t('langage.items').name
-      // }
+    displayLangage(langageNumber){
+      return this.$i18n.langage.itmes.filter(i => i.val == langageNumber)
     },
     message(user){
       console.log(user.id)
