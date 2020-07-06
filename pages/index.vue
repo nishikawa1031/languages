@@ -49,12 +49,11 @@
                   </v-list-item-title>
                   <v-list-item-subtitle>
                       <!-- {{$t('language.items')}} -->
+
                     <br>
-                      {{ $t('language.items') }}
-                      {{displaylanguage(user.language).name}}
-                      {{user.language}}のレベル:{{user.languageLevel}}
+                      {{displaylanguage(user.language)}}のレベル:{{user.languageLevel}}
                     <br>
-                      {{ $t('can_teach') }}：{{ user.category }}
+                      {{ $t('can_teach') }}：{{displaylanguage(user.category)}}
                     <br>
                       {{ $t('summary') }}：{{ user.summary }}
                     <br>
@@ -196,13 +195,6 @@ export default {
   mounted(){
     this.getData();
     this.sortUsers();
-    // console.log(this.$i18n.locale)
-    // console.log(this.$t)
-    console.log(this.$t('language.items'))
-    console.log(this.$t('language.items[0].name'))
-    console.log(this.$t('language.items[0].val'))
-    // console.log(this.$t.language.items[0].name)
-    console.log('$t(\'message\')', this.$t('message'))
   },
   created(){
   },
@@ -245,7 +237,8 @@ export default {
       this.length = Math.ceil(this.categoryUsers.length/this.pageSize)
     },
     displaylanguage(languageNumber){
-      return this.$i18n.language.itmes.filter(i => i.val == languageNumber)
+      this.selectedLangage = this.$t('language.items').filter(i => i.val == languageNumber)
+      return this.selectedLangage[0].name
     },
     message(user){
       // console.log(user.id)
