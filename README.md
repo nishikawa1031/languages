@@ -1,6 +1,6 @@
 # languages
 
-> My mind-blowing Nuxt.js project
+firebaseとnuxtで作っています。google認証でログインし、先生としての経歴を投稿すると、そのデータがカード形式で表示されるようになっています。
 
 ## Build Setup
 
