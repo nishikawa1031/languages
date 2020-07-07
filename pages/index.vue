@@ -33,23 +33,48 @@
       </v-card>
     </v-row>
     <br>
+    <div
+      v-for="(category, index) in $t('language.items')"
+      :key="index"
+    >
+      <v-btn
+        class="title"
+
+        text
+        color="light-blue darken-1"
+        @click="getCategoryData(category);"
+      >
+        {{ category.name }}:({{getCategoryNumber(category)}})
+      </v-btn>
+
     <v-row>
         <ul>
-          <li v-for="user in displayUsers" :key="user.id">
+          <li v-for="user in display(category)" :key="user.id">
             <v-card
               class="mx-auto"
               max-width="344"
               outlined
             >
+              <v-layout justify-center>
+                  <v-avatar
+                    tile
+                    size="120"
+                    color="grey"
+                  >
+                    <img :src="user.icon"/>
+                  </v-avatar>
+                </v-layout>
               <v-list-item>
+
                 <v-list-item-content>
-                  <div class="overline mb-4"></div>
+                  <div class="Subtitle 1 mb-4">
+                      {{ user.count }}{{ $t('number_of_views') }}
+                  </div>
                   <v-list-item-title class="headline mb-1">
                     {{ user.name }}
                   </v-list-item-title>
-                  <v-list-item-subtitle>
-                      <!-- {{$t('language.items')}} -->
 
+                  <v-list-item-subtitle>
                     <br>
                       {{displaylanguage(user.language)}}のレベル:{{displaylanguageLevel(user.languageLevel)}}
                     <br>
@@ -57,7 +82,6 @@
                     <br>
                       {{ $t('summary') }}：{{ user.summary }}
                     <br>
-                      {{ $t('number_of_views') }}：{{ user.count }}
                     <br>
                       {{ $t('detail') }}：{{user.content}}
                     <br>
@@ -69,13 +93,7 @@
 
                 </v-list-item-content>
 
-                <v-list-item-avatar
-                  tile
-                  size="80"
-                  color="grey"
-                >
-                <img :src="user.icon"/>
-                </v-list-item-avatar>
+
               </v-list-item>
 
               <v-card-actions>
@@ -149,6 +167,7 @@
         <!-- {{ $t('message') }} -->
 
       </v-row>
+      </div>
     </v-flex>
   </v-layout>
 </template>
@@ -194,6 +213,7 @@ export default {
   },
   mounted(){
     this.getData();
+    this.display();
     this.sortUsers();
   },
   created(){
@@ -220,6 +240,9 @@ export default {
             return c[i]
           }
         })
+    },
+    display(category){
+      return this.allUsers.filter(e => e.category == category.val).slice(0,this.pageSize)
     },
     sortUsers(){
       const c = this.displayUsers
@@ -277,6 +300,10 @@ export default {
   li {
     list-style: none;
     display: inline-block;
+  }
+
+  .title{
+    display: block;
   }
 
 </style>
