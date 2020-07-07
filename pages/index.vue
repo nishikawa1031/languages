@@ -19,27 +19,27 @@
             {{ $t('navigate') }}
           </v-tool-bar>
           <v-toolbar-items>
+
             <v-btn
               v-for="(category, index) in $t('language.items')"
               :key="index"
               text
               color="light-blue darken-1"
-              @click="getCategoryData(category);"
-            >
-              {{ category.name }}<br>({{getCategoryNumber(category)}})
+              v-scroll-to="`#${category.name}`" to>{{ category.name }}<br>({{getCategoryNumber(category)}})
             </v-btn>
+
           </v-toolbar-items>
         </v-app-bar>
       </v-card>
     </v-row>
     <br>
     <div
+        :id="(category.name)"
       v-for="(category, index) in $t('language.items')"
       :key="index"
     >
       <v-btn
         class="title"
-
         text
         color="light-blue darken-1"
         @click="getCategoryData(category);"
